@@ -1,0 +1,180 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=author content="Nathan Rooy"><meta name=copyright content="Nathan A. Rooy"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=language content="en"><link rel=icon type=image/png href=/favicon/favicon.png><title itemprop=name>Nathan Rooy</title><link rel=canonical href=https://nathanrooy.github.io/posts/2016-07-08/the-riddler/ itemprop=url><base href=https://nathanrooy.github.io/posts/2016-07-08/the-riddler/><meta itemprop=name content="FiveThirtyEight: The Riddler (2016-July-08) | Nathan Rooy"><meta itemprop=description content="FiveThirtyEight: The Riddler (2016-July-08)"><meta name=description content="FiveThirtyEight: The Riddler (2016-July-08)"><meta name=application-name content="FiveThirtyEight: The Riddler (2016-July-08) | Nathan Rooy"><meta name=twitter:card content="nathanrooy.github.io"><meta name=twitter:url content="https://nathanrooy.github.io/posts/2016-07-08/the-riddler/"><meta name=twitter:title content="FiveThirtyEight: The Riddler (2016-July-08) | Nathan Rooy"><meta name=twitter:description content="FiveThirtyEight: The Riddler (2016-July-08)"><meta property="og:title" content="FiveThirtyEight: The Riddler (2016-July-08)"><meta property="og:description" content="FiveThirtyEight: The Riddler (2016-July-08)"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:url" content="https://nathanrooy.github.io/posts/2016-07-08/the-riddler/"><meta property="og:site_name" content="nathanrooy.github.io"><meta itemprop=image content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><meta property="og:image" content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><meta name=twitter:image content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><meta name=twitter:image:src content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel=stylesheet><script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-88488688-1','auto'),ga('send','pageview')</script><link rel=stylesheet type=text/css media=screen href=https://nathanrooy.github.io/css/normalize.css><link rel=stylesheet type=text/css media=screen href=https://nathanrooy.github.io/css/main.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css integrity=sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js integrity=sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script></head><body><div class="container wrapper post"><div class=header><h1 class=site-title><a href=https://nathanrooy.github.io/>Nathan Rooy</a></h1><hr><nav class=nav><ul class=flat><li><a href=/posts>Posts</a></li><li><a href=/about>About</a></li><li><a href=/>Home</a></li></ul></nav></div><div class=post-header><h1 class=title>FiveThirtyEight: The Riddler (2016-July-08)</h1><div class=meta>Posted at &mdash; July 8, 2016</div></div><div class=markdown><p>I hate puzzles, but for some reason I find the Riddler from FiveThirtyEight more addicting than Flavor Blasted Goldfish. Anyway, I decided to post my solution for this week. Below is the question:</p><blockquote>The archvillain Laser Larry threatens to imminently zap Riddler Headquarters (which, seen from above, is shaped like a regular pentagon with no courtyard or other funny business). He plans to do it with a high-powered, vertical planar ray that will slice the building exactly in half by area, as seen from above. The building is quickly evacuated, but not before in-house mathematicians move the most sensitive riddling equipment out of the places in the building that have an extra high risk of getting zapped.<br><br><i>Where are those places</i>, and how much riskier are they than the safest spots? (It’s fine to describe those places qualitatively.)</blockquote><p>Doesn’t seem too difficult right? Well first things first, lets create a pentagon about the origin [0,0] and calculate its area.</p><figure><center><img src=01-tiny.png></center></figure><p>Using the length of one of its edges (a), we can calculate the total pentagon area using:</p><p><equation class=has-jax>$$ area = \frac{1}{4}\sqrt{5(5+2\sqrt{5})}\ a^2 $$</equation></p><p>Since every edge <equation class=has-jax>( a=1.17557050458 )</equation>, the total pentagon area is: <equation class=has-jax>( area=2.37764129074 )</equation>. Next we need to divide the perimeter into individual points where the laser will begin its cut. And because I don’t want to spend all day working this, I’m only going to choose a single edge. Doing it this way should allow me to simply rotate the results about the origin for a final solution.</p><figure><center><img src=02-tiny.png></center></figure><p>I only created twenty cut points, but this is only for visualization. I will bump that number up to several hundred for the final run.</p><p>Next we need to figure out where on the other sides of the pentagon the laser must cross in order to split the pentagon into two equal area halves.</p><figure><center><img src=03.gif></center></figure><p>This was accomplished by creating a series of triangles and optimizing them using <a target=_blank href=https://en.wikipedia.org/wiki/Powell%27s_method>Powell’s method</a>. The cost function for this optimization was simple; the area of the colored triangles must equal exactly one half of the total pentagon area. Below is a quick animation showing the optimization.</p><figure><center><img src=04.gif></center></figure><p>Now that the hard part is over, we can increase the number of cut points and lower the alpha channel.</p><figure><center><img src=05-tiny.png></center></figure><p>Rotating the results four more times about the origin results in the final solution seen below. The star pattern emerges because not every cut crosses the centroid of the pentagon.</p><figure><center><img src=06-tiny.png></center></figure><p>Darker areas represent locations where the laser is crossing more frequently. Therefore the equipment should be moved to the midpoint of each wall to minimize damage. I think…</p><p>Below is the code:</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#09f;font-style:italic>#------------------------------------------------------------------------------+</span>
+<span style=color:#09f;font-style:italic>#</span>
+<span style=color:#09f;font-style:italic>#   The Riddler - July 8th, 2016</span>
+<span style=color:#09f;font-style:italic>#   FiveThirtyEight</span>
+<span style=color:#09f;font-style:italic>#</span>
+<span style=color:#09f;font-style:italic>#------------------------------------------------------------------------------+</span>
+
+<span style=color:#09f;font-style:italic>#--- IMPORT DEPENDENCIES ------------------------------------------------------+</span>
+
+<span style=color:#069;font-weight:700>from</span> <span style=color:#0cf;font-weight:700>__future__</span> <span style=color:#069;font-weight:700>import</span> division
+<span style=color:#069;font-weight:700>from</span> <span style=color:#0cf;font-weight:700>matplotlib</span> <span style=color:#069;font-weight:700>import</span> pyplot <span style=color:#069;font-weight:700>as</span> plt
+<span style=color:#069;font-weight:700>from</span> <span style=color:#0cf;font-weight:700>scipy.optimize</span> <span style=color:#069;font-weight:700>import</span> minimize
+<span style=color:#069;font-weight:700>from</span> <span style=color:#0cf;font-weight:700>math</span> <span style=color:#069;font-weight:700>import</span> sin,cos,radians,degrees,pi,sqrt
+
+<span style=color:#09f;font-style:italic>#------------------------------------------------------------------------------+</span>
+
+<span style=color:#09f;font-style:italic># create a pentagon centered @ [0,0]</span>
+angles<span style=color:#555>=</span>[i <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>90</span>,<span style=color:#f60>450</span>,<span style=color:#f60>72</span>)]
+
+pentagon_pts<span style=color:#555>=</span>[]
+<span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(angles)):
+    x<span style=color:#555>=</span>cos(radians(angles[i]))
+    y<span style=color:#555>=</span>sin(radians(angles[i]))
+    pentagon_pts<span style=color:#555>.</span>append([x,y])
+
+<span style=color:#09f;font-style:italic># calculate total area based on length of one side</span>
+a<span style=color:#555>=</span><span style=color:#366>abs</span>(pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>])<span style=color:#555>+</span><span style=color:#366>abs</span>(pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>])       <span style=color:#09f;font-style:italic># length of bottom edge</span>
+area_total<span style=color:#555>=</span><span style=color:#f60>0.25</span><span style=color:#555>*</span>sqrt(<span style=color:#f60>5.0</span><span style=color:#555>*</span>(<span style=color:#f60>5.0</span><span style=color:#555>+</span><span style=color:#f60>2.0</span><span style=color:#555>*</span>sqrt(<span style=color:#f60>5.0</span>)))<span style=color:#555>*</span>a<span style=color:#555>**</span><span style=color:#f60>2</span>      <span style=color:#09f;font-style:italic># total pentagon area</span>
+
+<span style=color:#09f;font-style:italic># create perimeter points (on single edge only)</span>
+num_cuts<span style=color:#555>=</span><span style=color:#f60>200</span>
+delta_x<span style=color:#555>=</span>(pentagon_pts[<span style=color:#f60>1</span>][<span style=color:#f60>0</span>]<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>0</span>][<span style=color:#f60>0</span>])<span style=color:#555>/</span>num_cuts
+delta_y<span style=color:#555>=</span>(pentagon_pts[<span style=color:#f60>1</span>][<span style=color:#f60>1</span>]<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>0</span>][<span style=color:#f60>1</span>])<span style=color:#555>/</span>num_cuts
+
+cut_pts_x<span style=color:#555>=</span>[delta_x<span style=color:#555>*</span>i<span style=color:#555>+</span>pentagon_pts[<span style=color:#f60>0</span>][<span style=color:#f60>0</span>] <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,num_cuts)]
+cut_pts_y<span style=color:#555>=</span>[delta_y<span style=color:#555>*</span>i<span style=color:#555>+</span>pentagon_pts[<span style=color:#f60>0</span>][<span style=color:#f60>1</span>] <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,num_cuts)]
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>triangleArea</span>(points):
+    x_a<span style=color:#555>=</span>points[<span style=color:#f60>0</span>]
+    y_a<span style=color:#555>=</span>points[<span style=color:#f60>1</span>]
+    x_b<span style=color:#555>=</span>points[<span style=color:#f60>2</span>]
+    y_b<span style=color:#555>=</span>points[<span style=color:#f60>3</span>]
+    x_c<span style=color:#555>=</span>points[<span style=color:#f60>4</span>]
+    y_c<span style=color:#555>=</span>points[<span style=color:#f60>5</span>]
+    area<span style=color:#555>=</span><span style=color:#f60>0.5</span><span style=color:#555>*</span><span style=color:#366>abs</span>((x_a<span style=color:#555>-</span>x_c)<span style=color:#555>*</span>(y_b<span style=color:#555>-</span>y_a)<span style=color:#555>-</span>(x_a<span style=color:#555>-</span>x_b)<span style=color:#555>*</span>(y_c<span style=color:#555>-</span>y_a))
+    <span style=color:#069;font-weight:700>return</span> area
+
+<span style=color:#09f;font-style:italic># simulate laser cuts</span>
+laser_cuts_x<span style=color:#555>=</span>[]
+laser_cuts_y<span style=color:#555>=</span>[]
+
+<span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(cut_pts_x)):
+    triangle1_plot<span style=color:#555>=</span>[]
+    triangle2_plot<span style=color:#555>=</span>[]
+    triangle3_plot<span style=color:#555>=</span>[]
+
+    <span style=color:#09f;font-style:italic># cost function</span>
+    <span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>testFunc</span>(x0):
+        <span style=color:#09f;font-style:italic>#--- triangle #1 ----------------------------------+</span>
+        area_tri_1<span style=color:#555>=</span>triangleArea([cut_pts_x[i],
+                                 cut_pts_y[i],
+                                 pentagon_pts[<span style=color:#f60>1</span>][<span style=color:#f60>0</span>],
+                                 pentagon_pts[<span style=color:#f60>1</span>][<span style=color:#f60>1</span>],
+                                 pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>],
+                                 pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>1</span>]])
+
+        <span style=color:#09f;font-style:italic>#--- triangle #2 ----------------------------------+</span>
+        area_tri_2<span style=color:#555>=</span>triangleArea([cut_pts_x[i],
+                                 cut_pts_y[i],
+                                 pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>],
+                                 pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>1</span>],
+                                 x0,
+                                 pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>1</span>]])
+
+        <span style=color:#09f;font-style:italic># check to make sure the new calculated piint is between the two bottom points</span>
+        <span style=color:#069;font-weight:700>if</span> x0<span style=color:#555>&gt;=</span>pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>] <span style=color:#000;font-weight:700>and</span> x0<span style=color:#555>&lt;=</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>]:
+            <span style=color:#069;font-weight:700>return</span> <span style=color:#366>abs</span>((area_tri_1<span style=color:#555>+</span>area_tri_2)<span style=color:#555>-</span>(<span style=color:#f60>0.5</span><span style=color:#555>*</span>area_total))
+
+        <span style=color:#09f;font-style:italic># if the calculated point goes beyond the bottom right point, recalculate using three triangles</span>
+        <span style=color:#069;font-weight:700>if</span> x0<span style=color:#555>&gt;</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>]:
+
+            <span style=color:#09f;font-style:italic>#--- recalculate triangle area #2 -------------+</span>
+            area_tri_2<span style=color:#555>=</span>triangleArea([cut_pts_x[i],
+                                     cut_pts_y[i],
+                                     pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>],
+                                     pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>1</span>],
+                                     pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>],
+                                     pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>1</span>]])
+
+            <span style=color:#09f;font-style:italic>#--- triangle #3 ------------------------------+</span>
+
+            <span style=color:#09f;font-style:italic># calculate slope between points #3 and #4</span>
+            del_y<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>4</span>][<span style=color:#f60>1</span>]<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>1</span>]
+            del_x<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>4</span>][<span style=color:#f60>0</span>]<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>]
+            
+            slope<span style=color:#555>=</span>del_y<span style=color:#555>/</span>del_x
+            y_c<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>1</span>]<span style=color:#555>+</span>((x0<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>])<span style=color:#555>*</span>slope)
+
+            <span style=color:#09f;font-style:italic># calculate new area for triangle #3</span>
+            area_tri_3<span style=color:#555>=</span>triangleArea([cut_pts_x[i],
+                                     cut_pts_y[i],
+                                     pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>],
+                                     pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>1</span>],
+                                     x0,
+                                     y_c])
+            
+            <span style=color:#09f;font-style:italic># calculate new cost func</span>
+            func<span style=color:#555>=</span><span style=color:#366>abs</span>((area_tri_1<span style=color:#555>+</span>area_tri_2<span style=color:#555>+</span>area_tri_3)<span style=color:#555>-</span>(<span style=color:#f60>0.5</span><span style=color:#555>*</span>area_total))
+            <span style=color:#069;font-weight:700>return</span> func
+            
+        <span style=color:#09f;font-style:italic># if point is less than the bottom right edge</span>
+        <span style=color:#069;font-weight:700>if</span> x0<span style=color:#555>&lt;</span>pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>]:
+            <span style=color:#069;font-weight:700>return</span> <span style=color:#f60>1</span>
+
+    <span style=color:#09f;font-style:italic># optimize function to determine x_c</span>
+    xopt<span style=color:#555>=</span>minimize(testFunc,<span style=color:#f60>0</span>,method<span style=color:#555>=</span><span style=color:#c30>&#39;Powell&#39;</span>,options<span style=color:#555>=</span>{<span style=color:#c30>&#39;disp&#39;</span>:False,<span style=color:#c30>&#39;ftol&#39;</span>: <span style=color:#f60>1e-10</span>,<span style=color:#c30>&#39;maxiter&#39;</span>:<span style=color:#f60>1000</span>})
+    <span style=color:#069;font-weight:700>print</span> xopt<span style=color:#555>.</span>x
+
+    <span style=color:#069;font-weight:700>if</span> pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>0</span>]<span style=color:#555>&lt;=</span>xopt<span style=color:#555>.</span>x <span style=color:#000;font-weight:700>and</span> xopt<span style=color:#555>.</span>x<span style=color:#555>&lt;=</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>]:
+        y_c<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>2</span>][<span style=color:#f60>1</span>]
+
+    <span style=color:#069;font-weight:700>if</span> xopt<span style=color:#555>.</span>x<span style=color:#555>&gt;</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>]:
+        del_y<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>4</span>][<span style=color:#f60>1</span>]<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>1</span>]
+        del_x<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>4</span>][<span style=color:#f60>0</span>]<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>]
+            
+        slope<span style=color:#555>=</span>del_y<span style=color:#555>/</span>del_x
+        y_c<span style=color:#555>=</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>1</span>]<span style=color:#555>+</span>((xopt<span style=color:#555>.</span>x<span style=color:#555>-</span>pentagon_pts[<span style=color:#f60>3</span>][<span style=color:#f60>0</span>])<span style=color:#555>*</span>slope)
+    
+    <span style=color:#09f;font-style:italic># save results</span>
+    laser_cuts_x<span style=color:#555>.</span>append(xopt<span style=color:#555>.</span>x)
+    laser_cuts_y<span style=color:#555>.</span>append(y_c)
+
+<span style=color:#09f;font-style:italic># rotate results 72 degrees, four times about orgin [0,0]</span>
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>rotate</span>(x,y,theta):
+    x_new<span style=color:#555>=</span>x<span style=color:#555>*</span>cos(radians(theta))<span style=color:#555>-</span>y<span style=color:#555>*</span>sin(radians(theta))
+    y_new<span style=color:#555>=</span>x<span style=color:#555>*</span>sin(radians(theta))<span style=color:#555>+</span>y<span style=color:#555>*</span>cos(radians(theta))
+    <span style=color:#069;font-weight:700>return</span> x_new,y_new
+
+laserCuts_start_x_new<span style=color:#555>=</span><span style=color:#366>list</span>(cut_pts_x)
+laserCuts_start_y_new<span style=color:#555>=</span><span style=color:#366>list</span>(cut_pts_y)
+laserCuts_end_x_new<span style=color:#555>=</span><span style=color:#366>list</span>(laser_cuts_x)
+laserCuts_end_y_new<span style=color:#555>=</span><span style=color:#366>list</span>(laser_cuts_y)
+
+<span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>1</span>,<span style=color:#f60>5</span>):
+    theta<span style=color:#555>=</span>i<span style=color:#555>*</span><span style=color:#f60>72</span>
+    <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(laser_cuts_x)):
+        x_1,y_1<span style=color:#555>=</span>rotate(cut_pts_x[j],cut_pts_y[j],theta)
+        x_2,y_2<span style=color:#555>=</span>rotate(laser_cuts_x[j],laser_cuts_y[j],theta)
+
+        laserCuts_start_x_new<span style=color:#555>.</span>append(x_1)
+        laserCuts_start_y_new<span style=color:#555>.</span>append(y_1)
+        laserCuts_end_x_new<span style=color:#555>.</span>append(x_2)
+        laserCuts_end_y_new<span style=color:#555>.</span>append(y_2)
+
+<span style=color:#09f;font-style:italic>#--- PLOTTING -----------------------------------------------------------------+</span>
+        
+<span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(laserCuts_start_x_new)):
+    x_new<span style=color:#555>=</span>[]
+    y_new<span style=color:#555>=</span>[]
+    x_new<span style=color:#555>.</span>append(laserCuts_start_x_new[i])
+    x_new<span style=color:#555>.</span>append(laserCuts_end_x_new[i])
+    y_new<span style=color:#555>.</span>append(laserCuts_start_y_new[i])
+    y_new<span style=color:#555>.</span>append(laserCuts_end_y_new[i])
+
+    plt<span style=color:#555>.</span>plot(x_new,y_new,<span style=color:#c30>&#39;b&#39;</span>,alpha<span style=color:#555>=</span><span style=color:#f60>0.03</span>,linewidth<span style=color:#555>=</span><span style=color:#f60>4</span>)
+    
+pentagon_pts<span style=color:#555>.</span>append(pentagon_pts[<span style=color:#f60>0</span>])
+x,y<span style=color:#555>=</span><span style=color:#366>zip</span>(<span style=color:#555>*</span>pentagon_pts)
+
+plt<span style=color:#555>.</span>plot(x,y,<span style=color:#c30>&#39;k&#39;</span>)                   <span style=color:#09f;font-style:italic># plot pentagon outline</span>
+plt<span style=color:#555>.</span>plot(<span style=color:#f60>0</span>,<span style=color:#f60>0</span>,<span style=color:#c30>&#39;ro&#39;</span>,markersize<span style=color:#555>=</span><span style=color:#f60>3</span>)     <span style=color:#09f;font-style:italic># plot point at origin</span>
+plt<span style=color:#555>.</span>axes()<span style=color:#555>.</span>set_aspect(<span style=color:#c30>&#39;equal&#39;</span>)
+plt<span style=color:#555>.</span>xlim([<span style=color:#555>-</span><span style=color:#f60>1.1</span>,<span style=color:#f60>1.1</span>])
+plt<span style=color:#555>.</span>ylim([<span style=color:#555>-</span><span style=color:#f60>1.1</span>,<span style=color:#f60>1.1</span>])
+<span style=color:#09f;font-style:italic>##plt.savefig(&#39;06-final.png&#39;,dpi=72)</span>
+plt<span style=color:#555>.</span>show()
+
+<span style=color:#09f;font-style:italic>#--- END ----------------------------------------------------------------------+</span>
+</code></pre></div><hr style=margin-bottom:2em;margin-top:3em><h1 class=entry-title style=color:#202020>Update: 2016-July-17</h1><p>Holy shit, <a target=_blank style=font-weight:800 href=http://fivethirtyeight.com/features/how-long-will-you-be-stuck-playing-this-bar-game/>I won!</a></p><center><img style="border:2px solid gray;margin-bottom:2em" src=riddler-win-crop-tiny.png></center><p>Additionally, I added the code to my GitHub which can be download (<a target=_blank href=https://github.com/nathanrooy/The-Riddler-FiveThirtyEight/blob/master/2016-07-08/main.py>here</a>).</p></div><hr></div><div class=footer><center>&copy; <a href=/about>Nathan A. Rooy</a>.<br>Built with <a target=_blank href=https://gohugo.io/ rel=nofollow>Hugo</a>.
+Powered by <a target=_blank href=http://www.github.com>GitHub</a></center></div></body></html>
