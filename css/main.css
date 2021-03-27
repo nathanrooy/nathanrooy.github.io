@@ -689,6 +689,10 @@ ul {
     display: inline;
 }
 
+.markdown ul li {
+    font-size:15px;
+}
+
 .highlight pre {
     margin-bottom: 0;
     margin-top: 0;
