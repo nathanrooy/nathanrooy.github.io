@@ -698,6 +698,10 @@ ul {
     margin-top: 0;
     padding: 20px;
     background-color: transparent !important;
+
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
 }
 
 .highlight {
