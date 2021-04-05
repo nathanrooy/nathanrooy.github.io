@@ -274,6 +274,7 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
+
 .header a {
     text-decoration: none;
     color: #333;
@@ -281,7 +282,7 @@ body {
 
 .header a:hover{
     text-decoration: none;
-    color: #2a7ae2;
+    color: #333;
 }
 
 .header a:visited{
