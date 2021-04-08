@@ -353,6 +353,7 @@ body {
 .footnotes {
     line-height: 1rem;
     font-size: 15px;
+    margin-top: 1em;
 }
 
 .footnotes hr {
@@ -361,7 +362,7 @@ body {
 
 .footnotes li p {
 	line-height:1rem;
-	margin-bottom:1rem;
+	margin-bottom:0rem;
 }
 
 .footnotes ol {
@@ -626,11 +627,11 @@ hr {
 }
 
 img {
-    margin-top: 1.5em;
+    /* margin-top: 1.5em;
     margin-bottom: 1.5em;
     margin-left: 0;
-    margin-right: 0;
-    /* margin: 10px auto 10px auto; */
+    margin-right: 0; */
+    margin: 1.5em auto 1.5em auto;
     max-width: 100%;
     display: block;
 }
