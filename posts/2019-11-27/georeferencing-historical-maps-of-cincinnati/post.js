@@ -24,6 +24,7 @@ $(document).ready(function () {
   	var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		minZoom: 11,
 		maxZoom: 18,
+        dragging: true,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   	}).addTo(map);
 
@@ -31,6 +32,7 @@ $(document).ready(function () {
     var osmLayer2 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		minZoom: 11,
 		maxZoom: 18,
+        dragging: true,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   	}).addTo(map);
 
@@ -38,6 +40,7 @@ $(document).ready(function () {
     var new_raster = L.tileLayer('https://georeferenced-cincinnati-maps.s3.us-east-2.amazonaws.com/1898/{z}/{x}/{y}.png', {
         minZoom: 11,
         maxZoom: 18,
+        dragging: true,
         tms: true,
     }).addTo(map);
 
@@ -82,6 +85,7 @@ $(document).ready(function () {
 			new_raster = L.tileLayer('https://georeferenced-cincinnati-maps.s3.us-east-2.amazonaws.com/'+year+'/{z}/{x}/{y}.png', {
 				minZoom: 11,
 				maxZoom: 18,
+                dragging: true,
 				tms: true,
 			});
             
