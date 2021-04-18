@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="568.8pt" version="1.1" viewBox="0 0 350.258732 568.8" width="350.258732pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-04-18T13:15:01.256110</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 568.8 
+L 350.258732 568.8 
+L 350.258732 0 
+L 0 0 
+z
+" style="fill:#ffffff;"/>
+  </g>
+  <g id="axes_1">
+   <g id="LineCollection_1">
+    <path clip-path="url(#p5ff1b6de0d)" d="M 98.057217 536.4 
+L 85.599802 531.748774 
+L 76.555378 522.211958 
+L 65.347117 517.416508 
+L 59.674727 530.288505 
+L 22.466306 509.303904 
+L 29.210375 498.162595 
+L 46.650756 508.294336 
+L 58.391443 491.077588 
+L 81.354042 444.745608 
+L 91.941138 430.124894 
+L 131.531827 354.957116 
+L 143.682073 336.802912 
+L 164.214623 297.348617 
+L 179.791511 271.911098 
+L 190.876904 248.970458 
+L 215.675692 205.207469 
+L 252.112777 137.87286 
+L 293.860476 63.408173 
+L 310.270133 32.4 
+L 327.792426 42.901315 
+L 319.239472 56.836965 
+L 313.02783 55.953592 
+" style="fill:none;stroke:#000000;stroke-width:3;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5ff1b6de0d">
+   <rect height="554.4" width="335.858732" x="7.2" y="7.2"/>
+  </clipPath>
+ </defs>
+</svg>

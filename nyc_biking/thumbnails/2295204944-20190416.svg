@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="568.8pt" version="1.1" viewBox="0 0 278.917491 568.8" width="278.917491pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-04-18T13:14:50.622340</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 568.8 
+L 278.917491 568.8 
+L 278.917491 0 
+L 0 0 
+z
+" style="fill:#ffffff;"/>
+  </g>
+  <g id="axes_1">
+   <g id="LineCollection_1">
+    <path clip-path="url(#p46e5b0d332)" d="M 21.152512 536.4 
+L 28.062171 515.830772 
+L 19.223522 501.488925 
+L 43.790067 460.849199 
+L 75.664317 459.366489 
+L 98.863219 432.111588 
+L 98.628474 406.595502 
+L 118.418475 381.605103 
+L 128.400228 345.763965 
+L 153.885339 306.458677 
+L 184.494009 300.17738 
+L 196.016913 284.015843 
+L 223.502457 232.296232 
+L 224.921132 211.376545 
+L 219.093339 197.722136 
+L 228.493334 176.829408 
+L 241.863577 162.244936 
+L 247.293324 128.722217 
+L 259.693969 111.374513 
+L 236.944144 108.355176 
+L 251.283984 86.626739 
+L 240.404077 67.095408 
+L 253.947826 37.522088 
+L 244.098754 32.4 
+" style="fill:none;stroke:#000000;stroke-width:3;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p46e5b0d332">
+   <rect height="554.4" width="264.517491" x="7.2" y="7.2"/>
+  </clipPath>
+ </defs>
+</svg>

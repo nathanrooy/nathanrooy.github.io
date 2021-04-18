@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="568.8pt" version="1.1" viewBox="0 0 297.496554 568.8" width="297.496554pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-04-18T13:14:57.534136</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 568.8 
+L 297.496554 568.8 
+L 297.496554 0 
+L 0 0 
+z
+" style="fill:#ffffff;"/>
+  </g>
+  <g id="axes_1">
+   <g id="LineCollection_1">
+    <path clip-path="url(#p3cdf6b9e6b)" d="M 272.301181 32.4 
+L 277.428529 34.371693 
+L 267.518942 56.934554 
+L 253.799059 54.163023 
+L 247.530734 61.919588 
+L 258.454522 71.257227 
+L 258.412264 86.21233 
+L 238.522658 104.748102 
+L 225.323962 112.709276 
+L 218.330202 128.566522 
+L 207.223294 140.071163 
+L 207.272595 147.744024 
+L 189.087411 162.522419 
+L 183.910761 174.296773 
+L 186.615296 188.814755 
+L 183.290972 198.738322 
+L 171.395241 210.726586 
+L 170.373997 224.193619 
+L 150.970363 247.165699 
+L 141.095991 254.513045 
+L 136.595475 282.553863 
+L 123.051668 294.105006 
+L 113.635095 315.468111 
+L 98.246006 331.939185 
+L 96.935997 340.272377 
+L 104.598847 349.90763 
+L 84.519079 393.880098 
+L 74.102392 409.23512 
+L 74.010832 419.958524 
+L 58.241418 435.927375 
+L 30.329766 494.538732 
+L 20.068025 508.656795 
+L 62.122144 528.243516 
+L 59.974011 536.4 
+L 52.071696 520.273042 
+" style="fill:none;stroke:#000000;stroke-width:3;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3cdf6b9e6b">
+   <rect height="554.4" width="283.096554" x="7.2" y="7.2"/>
+  </clipPath>
+ </defs>
+</svg>
