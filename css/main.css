@@ -75,7 +75,12 @@ body {
 }
 
 /* DESKTOP */
-@media only screen and (min-width: 501px) {    
+@media only screen and (min-width: 501px) {
+    .header {
+        font-family: "Open Sans", sans-serif;
+        padding-top:0.5em;
+    }
+
     .grid_item {
 		background-color: black;
 		background-size: cover;
@@ -176,6 +181,11 @@ body {
 
 /* MOBILE */
 @media only screen and (max-width: 500px) {
+    .header {
+        font-family: "Open Sans", sans-serif;
+        padding-top:0em;
+    }
+
 
     .grid_item {
         background-color: black;
@@ -291,8 +301,8 @@ body {
 
 .site-title a {
 	color: #333;
-    font-size: 1em;
     font-weight:300;
+    font-size:2rem;
 }
 
 .site-title a:visited {
