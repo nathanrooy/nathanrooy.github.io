@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="558pt" version="1.1" viewBox="0 0 243.275651 558" width="243.275651pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-05-26T19:21:12.039004</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 558 
+L 243.275651 558 
+L 243.275651 0 
+L 0 0 
+z
+" style="fill:none;"/>
+  </g>
+  <g id="axes_1">
+   <g id="LineCollection_1">
+    <path clip-path="url(#p1d7c53c1a3)" d="M 203.098986 31.909091 
+L 219.02963 41.350404 
+L 225.672212 54.360808 
+L 211.035427 79.725758 
+L 193.002261 111.252727 
+L 181.12648 131.584343 
+L 175.708443 147.340202 
+L 160.909926 171.073131 
+L 150.224033 191.557273 
+L 141.871708 208.655354 
+L 133.669563 222.763939 
+L 120.93891 245.398687 
+L 107.330281 270.168788 
+L 92.624182 296.204848 
+L 77.594619 323.095051 
+L 60.84376 352.791717 
+L 43.353552 384.913535 
+L 29.640953 409.881919 
+L 20.814983 426.003838 
+L 17.603439 446.167677 
+L 44.150662 461.267677 
+L 68.82641 476.413434 
+L 95.500709 489.774646 
+L 116.780076 502.830808 
+L 142.276039 517.946061 
+L 136.615404 526.090909 
+L 124.92446 516.756364 
+L 125.767779 517.503737 
+" style="fill:none;stroke:#000000;stroke-width:3;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1d7c53c1a3">
+   <rect height="543.6" width="228.875651" x="7.2" y="7.2"/>
+  </clipPath>
+ </defs>
+</svg>
