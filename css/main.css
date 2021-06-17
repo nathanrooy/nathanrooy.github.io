@@ -584,7 +584,8 @@ table{
     font-size:14px;
     letter-spacing:-.01em;
     border-collapse:collapse;
-    margin-bottom:1em;
+    margin-bottom:2em;
+    margin-top:2em;
     font-weight:400;
     line-height:1.1rem;
 }
