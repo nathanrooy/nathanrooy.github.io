@@ -289,6 +289,7 @@ body {
 .header a {
     text-decoration: none;
     color: #333;
+    padding-bottom:0.1em;
 }
 
 .header a:hover{
