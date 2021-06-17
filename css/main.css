@@ -393,17 +393,17 @@ body {
 }
 
 .footer a {
-    color: #999;
-    font-weight: 600;
+    color: #555;
+    font-weight:400;
 }
 
 .footer a:hover{
-    color: #999;
-    text-decoration:none;
+    text-decoration:underline;
+    color: #555;
 }
 
 .footer a:visited {
-    color: #999;
+    color: #555;
 }
 
 /*--- FOOTNOTES -------------------------------------------------------------*/
