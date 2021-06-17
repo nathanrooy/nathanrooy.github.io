@@ -282,8 +282,10 @@ body {
 
 .header {
     font-family: "Open Sans", sans-serif;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    line-height:1.4;
 }
-
 
 .header a {
     text-decoration: none;
@@ -299,14 +301,60 @@ body {
     color: #333;
 }
 
-.site-title a {
+.header .site-title a {
 	color: #333;
     font-weight:300;
-    font-size:2rem;
+    font-size:1.4rem;
 }
 
-.site-title a:visited {
+.header .site-title a:visited {
     color: #333;
+}
+
+.header nav {
+    margin-top: 0;
+}
+
+.header nav ul,
+.header nav li {
+    margin: 0;
+}
+
+.header nav ul.flat {
+    padding: 0;
+}
+
+.header nav ul.flat li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 0;
+    margin-right: 10px;
+    text-transform: capitalize;
+}
+
+.header .site-description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .site-description nav {
+    margin: 0;
+    padding: 0;
+    border: none;
+    min-width: 50px;
+    margin-left: 15px;
+}
+
+.header .site-description nav ul svg {
+    max-height: 15px;
+}
+
+.header hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;  
 }
 
 /*--- CODE ------------------------------------------------------------------*/
@@ -345,16 +393,17 @@ body {
 }
 
 .footer a {
-    color: #2a7ae2;
+    color: #999;
+    font-weight: 600;
 }
 
 .footer a:hover{
-    color: #FFA500;  
+    color: #999;
     text-decoration:none;
 }
 
 .footer a:visited {
-    color: #2a7ae2;
+    color: #999;
 }
 
 /*--- FOOTNOTES -------------------------------------------------------------*/
@@ -396,6 +445,7 @@ body {
 }
 
 /*--- POST SPECIFIC ---------------------------------------------------------*/
+
 
 /* POST UPDATE BLOCK */
 .markdown .post-update {
@@ -515,7 +565,6 @@ body {
     margin-bottom:0;
 }
 
-/* HEADERS */
 .markdown h3 {
     font-family:'Open Sans';
     font-size: 1.5rem; 
@@ -585,18 +634,14 @@ table .katex-display {
 	margin-right: 5px;
 }
 
-
-
-/*
-blockquote cite {
-    font-size: 70%;
-    opacity: .8;
+.post-hr hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1rem 0;
+    padding: 0;
 }
-
-blockquote em {
-    font-weight: 600;
-}
-*/
 
 /*--- HYPERLINKS ------------------------------------------------------------*/
 
@@ -625,15 +670,6 @@ html,button,input,select,textarea {
 ::selection {
     background: #b3d4fc;
     text-shadow: none;
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1rem 0;
-    padding: 0;
 }
 
 img {
@@ -747,61 +783,6 @@ ul {
 
 .container {
     margin-top: 50px;
-}
-
-.header {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-}
-
-.header h1,
-.header h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 2rem;
-    line-height: 1.3em;
-}
-
-.header h2 {
-    font-size: 1.125rem;
-}
-
-.header nav {
-    margin-top: 0;
-}
-
-.header nav ul,
-.header nav li {
-    margin: 0;
-}
-
-.header nav ul.flat {
-    padding: 0;
-}
-
-.header nav ul.flat li {
-    display: inline-block;
-    list-style: none;
-    margin-left: 0;
-    margin-right: 10px;
-    text-transform: capitalize;
-}
-
-.header .site-description {
-    display: flex;
-    justify-content: space-between;
-}
-
-.header .site-description nav {
-    margin: 0;
-    padding: 0;
-    border: none;
-    min-width: 50px;
-    margin-left: 15px;
-}
-
-.header .site-description nav ul svg {
-    max-height: 15px;
 }
 
 .section .section-header {
