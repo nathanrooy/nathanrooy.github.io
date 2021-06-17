@@ -528,7 +528,7 @@ body {
 }
 
 .markdown .TLDR {
-	padding-top:1.5rem;
+	padding-top:0.5rem;
 	font-size:1.3rem;
 	line-height:1.5rem;
 	font-weight:300;
@@ -571,7 +571,7 @@ body {
     font-size: 1.5rem; 
     font-weight:400;
     margin-top:2em;
-    margin-bottom:0.5em;
+    margin-bottom:0.3em;
 }
 
 .markdown .ul-style-b li {
@@ -810,7 +810,7 @@ ul {
 }
 
 .post .post-header {
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
 }
 
 .post .post-header .title {
