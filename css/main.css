@@ -284,7 +284,6 @@ body {
     font-family: "Open Sans", sans-serif;
     margin-bottom: 20px;
     padding-bottom: 20px;
-    line-height:1.4;
 }
 
 .header a {
@@ -318,6 +317,7 @@ body {
 .header nav ul,
 .header nav li {
     margin: 0;
+    padding-top: 0;
 }
 
 .header nav ul.flat {
@@ -354,7 +354,7 @@ body {
     height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
-    padding: 0;  
+    padding: 0;
 }
 
 /*--- CODE ------------------------------------------------------------------*/
