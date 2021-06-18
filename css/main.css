@@ -486,23 +486,9 @@ body {
 	padding-bottom: 1rem;
 }
 
-
 /* PHOTO GRID */
 .markdown .photoset-grid-lightbox {
 	margin-bottom:1rem;
-}
-
-/* POST HEADER */
-.post-header {
-    margin-top:3rem;
-}
-
-.post-header h1{
-    font-weight: 100;
-    font-size: 3rem;
-    font-family: "Open Sans", sans-serif;
-    color: #333;
-    line-height: 3.5rem;
 }
 
 /* BODY STUFF */
@@ -645,6 +631,45 @@ table .katex-display {
     padding: 0;
 }
 
+.post-header h1{
+    font-weight: 100;
+    font-size: 3rem;
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    line-height: 3.5rem;
+}
+
+.post ul li {
+    margin-bottom: 10px;
+}
+
+.post ul li p {
+    display: inline;
+}
+
+.post .post-header {
+    margin-bottom:4rem;
+    margin-top:2rem;
+}
+
+.post .post-header .title {
+    margin: 0;
+}
+
+.post .post-header .meta {
+    padding-left: 0px;
+    margin-top: 10px;
+}
+
+.post .draft-label {
+    color: #a00;
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-left: 6px;
+    background-color: #f9f2f4;
+}
+
 /*--- HYPERLINKS ------------------------------------------------------------*/
 
 a {
@@ -750,14 +775,6 @@ ul {
     list-style: disc inside;
 }
 
-.post ul li {
-    margin-bottom: 10px;
-}
-
-.post ul li p {
-    display: inline;
-}
-
 .markdown ul li {
     font-size:15px;
 }
@@ -807,30 +824,6 @@ ul {
     font-size: 0.8rem;
     color: #999;
     margin-bottom: 4px;
-}
-
-.post .post-header {
-    margin-bottom: 3rem;
-}
-
-.post .post-header .title {
-    margin: 0;
-}
-
-
-
-.post .post-header .meta {
-    padding-left: 0px;
-    margin-top: 10px;
-}
-
-.post .draft-label {
-    color: #a00;
-    text-decoration: none;
-    padding: 2px 4px;
-    border-radius: 4px;
-    margin-left: 6px;
-    background-color: #f9f2f4;
 }
 
 .list .posts .post .meta {
