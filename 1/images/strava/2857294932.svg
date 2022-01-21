@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="558pt" version="1.1" viewBox="0 0 225.531733 558" width="225.531733pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-05-26T19:21:08.679871</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 558 
+L 225.531733 558 
+L 225.531733 0 
+L 0 0 
+z
+" style="fill:none;"/>
+  </g>
+  <g id="axes_1">
+   <g id="LineCollection_1">
+    <path clip-path="url(#pd1cc25425a)" d="M 133.788709 43.998441 
+L 134.76495 31.909091 
+L 161.47131 46.620763 
+L 184.777659 59.821267 
+L 199.432494 65.465927 
+L 208.734836 74.532939 
+L 198.243051 118.727218 
+L 176.65354 139.453935 
+L 165.858784 167.14388 
+L 143.248147 191.781857 
+L 140.431636 227.842493 
+L 139.41051 252.139716 
+L 127.572187 267.888465 
+L 114.555641 293.978349 
+L 96.478353 329.298215 
+L 78.030766 362.632821 
+L 63.319826 392.337658 
+L 53.332993 402.36767 
+L 38.004889 430.205769 
+L 23.69791 458.48833 
+L 16.796897 487.526475 
+L 47.913173 500.875132 
+L 73.239331 511.512575 
+L 71.634705 526.090909 
+L 57.776573 516.697958 
+L 58.539611 517.038712 
+" style="fill:none;stroke:#000000;stroke-width:3;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd1cc25425a">
+   <rect height="543.6" width="211.131733" x="7.2" y="7.2"/>
+  </clipPath>
+ </defs>
+</svg>

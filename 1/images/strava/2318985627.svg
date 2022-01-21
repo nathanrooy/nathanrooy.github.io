@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="558pt" version="1.1" viewBox="0 0 281.577426 558" width="281.577426pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2021-05-26T19:20:40.660457</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 558 
+L 281.577426 558 
+L 281.577426 0 
+L 0 0 
+z
+" style="fill:none;"/>
+  </g>
+  <g id="axes_1">
+   <g id="LineCollection_1">
+    <path clip-path="url(#pc98ef62897)" d="M 27.622485 526.090909 
+L 19.871469 521.45114 
+L 22.836953 516.514425 
+L 19.344428 510.835348 
+L 29.309016 500.74849 
+L 33.693996 491.90509 
+L 38.451419 480.565494 
+L 41.409875 476.937194 
+L 46.139189 468.270105 
+L 52.288 458.591547 
+L 56.216212 448.848031 
+L 59.975771 438.742614 
+L 63.594785 434.919444 
+L 74.796162 413.660022 
+L 80.403877 406.821002 
+L 86.081865 402.691607 
+L 91.956614 386.638006 
+L 100.670358 374.138468 
+L 101.204426 362.065788 
+L 100.909283 350.902503 
+L 107.212692 337.651323 
+L 114.640456 327.425271 
+L 125.455336 328.325386 
+L 134.429086 327.870689 
+L 147.394293 311.315993 
+L 154.421505 301.229134 
+L 152.917682 286.613861 
+L 163.135249 276.248617 
+L 165.700181 265.308041 
+L 168.974862 255.044872 
+L 173.556605 245.802451 
+L 181.947096 235.697034 
+L 187.238587 224.849254 
+L 197.941032 217.666891 
+L 210.259735 217.314268 
+L 217.4556 207.552194 
+L 223.386568 195.850696 
+L 230.420807 183.119169 
+L 237.209095 170.684588 
+L 238.705891 156.653926 
+L 235.979332 141.862342 
+L 244.362797 127.850239 
+L 251.966241 114.923842 
+L 253.701962 100.800384 
+L 262.232998 91.483728 
+L 253.104649 87.335774 
+L 251.390009 77.499463 
+L 256.829072 64.007014 
+L 249.858077 53.901597 
+L 255.465792 42.858946 
+L 257.742609 34.061944 
+L 252.90086 31.909091 
+" style="fill:none;stroke:#000000;stroke-width:3;"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc98ef62897">
+   <rect height="543.6" width="267.177426" x="7.2" y="7.2"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,410 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=author content="Nathan Rooy"><meta name=copyright content="Nathan A. Rooy"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=language content="en"><meta http-equiv=content-language content="en-gb"><link rel=icon type=image/png href=/favicon/favicon.png><meta name=google-site-verification content="vQ6uvoBDOPVq7u67m2fO8RWaxcqsoLrLzmR7CzEo-0k"><meta name=msvalidate.01 content="4903EB9C7ABD70347352DCFAEE0751F5"><script defer data-domain=nathanrooy.github.io src=https://plausible.io/js/plausible.js></script><script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script><meta property="og:title" content="Differential Evolution Optimization from Scratch with Python"><meta property="og:description" content="Differential Evolution Optimization from Scratch with Python"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:url" content="https://nathanrooy.github.io/posts/2017-08-27/simple-differential-evolution-with-python/"><meta property="og:site_name" content="nathanrooy.github.io"><meta property="og:image" content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><title>Differential Evolution Optimization from Scratch with Python</title><link rel=canonical href=https://nathanrooy.github.io/posts/2017-08-27/simple-differential-evolution-with-python/ itemprop=url><base href=https://nathanrooy.github.io/posts/2017-08-27/simple-differential-evolution-with-python/><meta itemprop=name content="Differential Evolution Optimization from Scratch with Python | Nathan Rooy"><meta itemprop=description content="Differential Evolution Optimization from Scratch with Python"><meta itemprop=image content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><meta name=description content="Differential Evolution Optimization from Scratch with Python"><meta name=application-name content="Differential Evolution Optimization from Scratch with Python | Nathan Rooy"><meta name=twitter:card content="nathanrooy.github.io"><meta name=twitter:url content="https://nathanrooy.github.io/posts/2017-08-27/simple-differential-evolution-with-python/"><meta name=twitter:title content="Differential Evolution Optimization from Scratch with Python | Nathan Rooy"><meta name=twitter:description content="Differential Evolution Optimization from Scratch with Python"><meta name=twitter:image content="https://nathanrooy.github.io/about/DSC_3706-EDIT-BLOG-TINY.jpg"><link rel=alternate type=application/rss+xml href=https://nathanrooy.github.io/index.xml title="Nathan Rooy"><link rel=stylesheet type=text/css media=screen href=https://nathanrooy.github.io/css/normalize.min.02d927c3d7aee93f4557abffff0169f2c90a749e49700a80350d5b3f2911e20a.css><link rel=stylesheet type=text/css media=screen href=https://nathanrooy.github.io/css/main.min.31d10ac7989292397ae7984cb63c02d2cb22403326b95ae8b11434487622e26d.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css integrity=sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js integrity=sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script></head><body><div class="container wrapper post"><div class=post-header><h1 class=title>Differential Evolution Optimization from Scratch with Python</h1><div class=meta><a href=/>Nathan Rooy</a> | August 27, 2017</div></div><div class=markdown><p>Besides <a target=blank href=https://en.wikipedia.org/wiki/Particle_swarm_optimization>particle swarm optimization</a> (PSO) which I touched on <a target=_blank href=https://nathanrooy.github.io/posts/2016-08-17/simple-particle-swarm-optimization-with-python/>previously</a>, <a target=blank href=https://en.wikipedia.org/wiki/Differential_evolution>differential evolution</a> (DE) is one of my go-to favorites. Just like PSO, differential evolution falls within the <a target=blank href=https://en.wikipedia.org/wiki/Evolutionary_algorithm>evolutionary algorithms</a> (EA) family. Differential evolution is very similar to <a target=blank>genetic algorithms</a> (GA) which are based on the principles of evolutionary biology such as mutation, crossover, and selection. The downside of genetic algorithms is that at their core, they are based on a bit level information structure. Because of this, GAs excel at combinatorial optimization problems such as the <a target=blank href=https://en.wikipedia.org/wiki/Travelling_salesman_problem>traveling salesman problem</a>. The downside is that GAs don't natively support real valued (float values) cost functions. Sure, genetic algorithms can be modified to support float values, but in my experience it just isn't worth it. This is where differential evolution comes it. Differential evolution is basically a genetic algorithm that natively supports float value based cost functions. In this tutorial, I hope to teach you the fundamentals of differential evolution and implement a bare bones version in <a target=_blank href=https://www.python.org/>Python</a>.</p><p>The basic structure of differential evolution can be summed up below:</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>1) Initialize a random population of individuals throughout the search space.
+2) while iter &lt;= max num of generations
+    3) cycle through each individual in the population
+        3.A) perform mutation
+        3.B) perform recombination (&#34;crossover&#34; in GA lingo)
+        3.C) perform selection
+    4) if stopping criterion has been met:
+            exit and return best individual
+        else:
+            iter = iter + 1
+            go back to step #3</code></pre></div><p>So let's go through each step while implementing it in Python. Before we can get to step one, we need to construct the main function which will contain the bulk of the code:</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>main</span>():
+
+
+    <span style=color:#069;font-weight:700>return</span> best_individual</code></pre></div><p>Simple, let's move to step one. Given a list of tuples representing the search space bounds for each input variable <span class=math>\( x_n \)</span> such that:</p><p><span class=math>\[ bounds = [(x_{1_{min}}, x_{1_{max}}),(x_{2_{min}},x_{2_{max}}),..,(x_{n_{min}},x_{n_{max}})] \]</span></p><p>Initializing a population of size (popsize) given user specified bounds:</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#069;font-weight:700>import</span> <span style=color:#0cf;font-weight:700>random</span>
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>main</span>(bounds, popsize):
+
+    <span style=color:#09f;font-style:italic>#--- INITIALIZE A POPULATION (step #1) ----------------+</span>
+    
+    population <span style=color:#555>=</span> []
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize):
+        indv <span style=color:#555>=</span> []
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(bounds)):
+            indv<span style=color:#555>.</span>append(random<span style=color:#555>.</span>uniform(bounds[j][<span style=color:#f60>0</span>],bounds[j][<span style=color:#f60>1</span>]))
+        population<span style=color:#555>.</span>append(indv)
+            
+    <span style=color:#069;font-weight:700>return</span> best_individual</code></pre></div><p>It would be prudent to note at this point that the term <i>individual</i> which is simply just a one-dimensional list, or array of values will be used interchangeably with the term <i>vector</i>, since they are essentially the same exact thing. Within the Python code, this may take the form of <i>vec</i> or just simply <i>v</i>.</p><p>Next, we need to begin the main loop of the algorithm represented by step #2, while we're at it, we'll knock out step #3A. There exists many different flavors of mutation for differential evolution but we're going to stick with the simplest for now. In this version of mutation, we need to select three individuals <span class=math>\( x_1 \)</span>, <span class=math>\( x_2 \)</span>, and <span class=math>\( x_3 \)</span> from the current generation that are both unique to themselves, but also unique to the currently selected individual that we're mutating. From here we subtract individuals <span class=math>\( x_2 \)</span> and <span class=math>\( x_3 \)</span> from each other, and multiply the difference by the user controlled mutation factor <span class=math>\( F \)</span> which ranges from [0,2]. This is then added to the individual <span class=math>\( x_1 \)</span> which forms the new individual <span class=math>\( v \)</span> or what's called the donor. Below is the equation form of this mutation scheme.</p><p><span class=math>\[ v = x_1 + F(x_2 - x_3) \]</span></p><p>One thing we need be aware of at this point is the possibility of this new donor vector existing outside of the bounds specified at initialization. Because of this, we need to create a separate function that checks and corrects for this. In the event that one of these rogue points are found, we'll simply move it to the nearest boundary whether it's the minimum or maximum. In the code, this new function will be called <i>ensure_bounds</i>. Implementing all this into our code looks like this:</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#069;font-weight:700>import</span> <span style=color:#0cf;font-weight:700>random</span>
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>ensure_bounds</span>(vec, bounds):
+
+    vec_new <span style=color:#555>=</span> []
+    <span style=color:#09f;font-style:italic># cycle through each variable in vector </span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(vec)):
+
+        <span style=color:#09f;font-style:italic># variable exceedes the minimum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&lt;</span> bounds[i][<span style=color:#f60>0</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>0</span>])
+
+        <span style=color:#09f;font-style:italic># variable exceedes the maximum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&gt;</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>1</span>])
+
+        <span style=color:#09f;font-style:italic># the variable is fine</span>
+        <span style=color:#069;font-weight:700>if</span> bounds[i][<span style=color:#f60>0</span>] <span style=color:#555>&lt;=</span> vec[i] <span style=color:#555>&lt;=</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(vec[i])
+        
+    <span style=color:#069;font-weight:700>return</span> vec_new
+
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>main</span>(bounds, popsize, mutate, maxiter):
+
+    <span style=color:#09f;font-style:italic>#--- INITIALIZE A POPULATION (step #1) ----------------+</span>
+    
+    population <span style=color:#555>=</span> []
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize):
+        indv <span style=color:#555>=</span> []
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(bounds)):
+            indv<span style=color:#555>.</span>append(random<span style=color:#555>.</span>uniform(bounds[j][<span style=color:#f60>0</span>],bounds[j][<span style=color:#f60>1</span>]))
+        population<span style=color:#555>.</span>append(indv)
+            
+    <span style=color:#09f;font-style:italic>#--- SOLVE --------------------------------------------+</span>
+
+    <span style=color:#09f;font-style:italic># cycle through each generation (step #2)</span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>1</span>,maxiter<span style=color:#555>+</span><span style=color:#f60>1</span>):
+    
+        <span style=color:#09f;font-style:italic># cycle through each individual in the population (step #3)</span>
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>, popsize):
+
+            <span style=color:#09f;font-style:italic>#--- MUTATION (step #3.A) ---------------------+</span>
+            
+            <span style=color:#09f;font-style:italic># select three random vector index positions [0, popsize), not including current vector (j)</span>
+            canidates <span style=color:#555>=</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize)
+            canidates<span style=color:#555>.</span>remove(j)
+            random_index <span style=color:#555>=</span> random<span style=color:#555>.</span>sample(canidates, <span style=color:#f60>3</span>)
+
+            x_1 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>0</span>]]
+            x_2 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>1</span>]]
+            x_3 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>2</span>]]
+            x_t <span style=color:#555>=</span> population[j]     <span style=color:#09f;font-style:italic># target individual</span>
+
+            <span style=color:#09f;font-style:italic># subtract x3 from x2, and create a new vector (x_diff)</span>
+            x_diff <span style=color:#555>=</span> [x_2_i <span style=color:#555>-</span> x_3_i <span style=color:#069;font-weight:700>for</span> x_2_i, x_3_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_2, x_3)]
+
+            <span style=color:#09f;font-style:italic># multiply x_diff by the mutation factor (F) and add to x_1</span>
+            v_donor <span style=color:#555>=</span> [x_1_i <span style=color:#555>+</span> mutate <span style=color:#555>*</span> x_diff_i <span style=color:#069;font-weight:700>for</span> x_1_i, x_diff_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_1, x_diff)]
+            v_donor <span style=color:#555>=</span> ensure_bounds(v_donor, bounds)
+            
+    <span style=color:#069;font-weight:700>return</span> best_individual</code></pre></div><p>Where <i>maxiter</i> represents the number of generations we want to run the algorithm for and <i>mutate</i> represents the mutation factor <span class=math>\( F \)</span>. Next step is recombination or "crossover" in the language of genetic algorithms. For this, we need to introduce a new user selected value known as the "recombination rate" (some texts refer to this as the crossover ratio or CR). This recombination rate is a float value that varies between zero and one and determines if recombination occurs. Cycling through each index position in the target vector, we generate a random value between zero and one. If this random value is less than the recombination rate, recombination occurs and we swap out the current variable in our target vector with the corresponding variable in the donor vector. If the randomly generated value is greater than the recombination rate, recombination does not happen and the variable in the target vector is left alone. This new offspring individual is called the <i>trial vector</i>.</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#069;font-weight:700>import</span> <span style=color:#0cf;font-weight:700>random</span>
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>ensure_bounds</span>(vec, bounds):
+
+    vec_new <span style=color:#555>=</span> []
+    <span style=color:#09f;font-style:italic># cycle through each variable in vector </span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(vec)):
+
+        <span style=color:#09f;font-style:italic># variable exceedes the minimum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&lt;</span> bounds[i][<span style=color:#f60>0</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>0</span>])
+
+        <span style=color:#09f;font-style:italic># variable exceedes the maximum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&gt;</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>1</span>])
+
+        <span style=color:#09f;font-style:italic># the variable is fine</span>
+        <span style=color:#069;font-weight:700>if</span> bounds[i][<span style=color:#f60>0</span>] <span style=color:#555>&lt;=</span> vec[i] <span style=color:#555>&lt;=</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(vec[i])
+        
+    <span style=color:#069;font-weight:700>return</span> vec_new
+    
+    
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>main</span>(bounds, popsize, mutate, recombination, maxiter):
+
+    <span style=color:#09f;font-style:italic>#--- INITIALIZE A POPULATION (step #1) ----------------+</span>
+    
+    population <span style=color:#555>=</span> []
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize):
+        indv <span style=color:#555>=</span> []
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(bounds)):
+            indv<span style=color:#555>.</span>append(random<span style=color:#555>.</span>uniform(bounds[j][<span style=color:#f60>0</span>],bounds[j][<span style=color:#f60>1</span>]))
+        population<span style=color:#555>.</span>append(indv)
+            
+    <span style=color:#09f;font-style:italic>#--- SOLVE --------------------------------------------+</span>
+
+    <span style=color:#09f;font-style:italic># cycle through each generation (step #2)</span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>1</span>,maxiter<span style=color:#555>+</span><span style=color:#f60>1</span>):
+    
+        <span style=color:#09f;font-style:italic># cycle through each individual in the population (step #3)</span>
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>, popsize):
+
+            <span style=color:#09f;font-style:italic>#--- MUTATION (step #3.A) ---------------------+</span>
+            
+            <span style=color:#09f;font-style:italic># select three random vector index positions [0, popsize), not including current vector (j)</span>
+            canidates <span style=color:#555>=</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize)
+            canidates<span style=color:#555>.</span>remove(j)
+            random_index <span style=color:#555>=</span> random<span style=color:#555>.</span>sample(canidates, <span style=color:#f60>3</span>)
+
+            x_1 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>0</span>]]
+            x_2 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>1</span>]]
+            x_3 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>2</span>]]
+            x_t <span style=color:#555>=</span> population[j]     <span style=color:#09f;font-style:italic># target individual</span>
+
+            <span style=color:#09f;font-style:italic># subtract x3 from x2, and create a new vector (x_diff)</span>
+            x_diff <span style=color:#555>=</span> [x_2_i <span style=color:#555>-</span> x_3_i <span style=color:#069;font-weight:700>for</span> x_2_i, x_3_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_2, x_3)]
+
+            <span style=color:#09f;font-style:italic># multiply x_diff by the mutation factor (F) and add to x_1</span>
+            v_donor <span style=color:#555>=</span> [x_1_i <span style=color:#555>+</span> mutate <span style=color:#555>*</span> x_diff_i <span style=color:#069;font-weight:700>for</span> x_1_i, x_diff_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_1, x_diff)]
+            v_donor <span style=color:#555>=</span> ensure_bounds(v_donor, bounds)
+            
+            <span style=color:#09f;font-style:italic>#--- RECOMBINATION (step #3.B) ----------------+</span>
+
+            v_trial <span style=color:#555>=</span> []
+            <span style=color:#09f;font-style:italic># cycle through each variable in our target vector</span>
+            <span style=color:#069;font-weight:700>for</span> k <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(x_t)):
+                crossover <span style=color:#555>=</span> random<span style=color:#555>.</span>random()
+                
+                <span style=color:#09f;font-style:italic># recombination occurs when crossover &lt;= recombination rate</span>
+                <span style=color:#069;font-weight:700>if</span> crossover <span style=color:#555>&lt;=</span> recombination:
+                    v_trial<span style=color:#555>.</span>append(v_donor[k])
+
+                <span style=color:#09f;font-style:italic># recombination did not occur</span>
+                <span style=color:#069;font-weight:700>else</span>:
+                    v_trial<span style=color:#555>.</span>append(x_t[k])
+            
+    <span style=color:#069;font-weight:700>return</span> best_individual</code></pre></div><p>The last real step (#3.C) is selection which consists of evaluating our new trial individual <i>v_trial</i> against the currently selected individual (target individual, x_t). We'll go with the easiest selection scheme for this tutorial which means we're using greedy selection. This basically means that if the new trial individual performs better than the currently selected target individual, we delete our target individual from the population and replace it with the trial individual. If the target individual is better, than we leave it alone and move on.</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#069;font-weight:700>import</span> <span style=color:#0cf;font-weight:700>random</span>
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>ensure_bounds</span>(vec, bounds):
+
+    vec_new <span style=color:#555>=</span> []
+    <span style=color:#09f;font-style:italic># cycle through each variable in vector </span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(vec)):
+
+        <span style=color:#09f;font-style:italic># variable exceedes the minimum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&lt;</span> bounds[i][<span style=color:#f60>0</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>0</span>])
+
+        <span style=color:#09f;font-style:italic># variable exceedes the maximum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&gt;</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>1</span>])
+
+        <span style=color:#09f;font-style:italic># the variable is fine</span>
+        <span style=color:#069;font-weight:700>if</span> bounds[i][<span style=color:#f60>0</span>] <span style=color:#555>&lt;=</span> vec[i] <span style=color:#555>&lt;=</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(vec[i])
+        
+    <span style=color:#069;font-weight:700>return</span> vec_new
+    
+    
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>main</span>(bounds, popsize, mutate, recombination, maxiter):
+
+    <span style=color:#09f;font-style:italic>#--- INITIALIZE A POPULATION (step #1) ----------------+</span>
+    
+    population <span style=color:#555>=</span> []
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize):
+        indv <span style=color:#555>=</span> []
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(bounds)):
+            indv<span style=color:#555>.</span>append(random<span style=color:#555>.</span>uniform(bounds[j][<span style=color:#f60>0</span>],bounds[j][<span style=color:#f60>1</span>]))
+        population<span style=color:#555>.</span>append(indv)
+            
+    <span style=color:#09f;font-style:italic>#--- SOLVE --------------------------------------------+</span>
+
+    <span style=color:#09f;font-style:italic># cycle through each generation (step #2)</span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>1</span>,maxiter<span style=color:#555>+</span><span style=color:#f60>1</span>):
+    
+        <span style=color:#09f;font-style:italic># cycle through each individual in the population (step #3)</span>
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>, popsize):
+
+            <span style=color:#09f;font-style:italic>#--- MUTATION (step #3.A) ---------------------+</span>
+            
+            <span style=color:#09f;font-style:italic># select three random vector index positions [0, popsize), not including current vector (j)</span>
+            canidates <span style=color:#555>=</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize)
+            canidates<span style=color:#555>.</span>remove(j)
+            random_index <span style=color:#555>=</span> random<span style=color:#555>.</span>sample(canidates, <span style=color:#f60>3</span>)
+
+            x_1 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>0</span>]]
+            x_2 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>1</span>]]
+            x_3 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>2</span>]]
+            x_t <span style=color:#555>=</span> population[j]     <span style=color:#09f;font-style:italic># target individual</span>
+
+            <span style=color:#09f;font-style:italic># subtract x3 from x2, and create a new vector (x_diff)</span>
+            x_diff <span style=color:#555>=</span> [x_2_i <span style=color:#555>-</span> x_3_i <span style=color:#069;font-weight:700>for</span> x_2_i, x_3_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_2, x_3)]
+
+            <span style=color:#09f;font-style:italic># multiply x_diff by the mutation factor (F) and add to x_1</span>
+            v_donor <span style=color:#555>=</span> [x_1_i <span style=color:#555>+</span> mutate <span style=color:#555>*</span> x_diff_i <span style=color:#069;font-weight:700>for</span> x_1_i, x_diff_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_1, x_diff)]
+            v_donor <span style=color:#555>=</span> ensure_bounds(v_donor, bounds)
+            
+            <span style=color:#09f;font-style:italic>#--- RECOMBINATION (step #3.B) ----------------+</span>
+
+            v_trial <span style=color:#555>=</span> []
+            <span style=color:#09f;font-style:italic># cycle through each variable in our target vector</span>
+            <span style=color:#069;font-weight:700>for</span> k <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(x_t)):
+                crossover <span style=color:#555>=</span> random<span style=color:#555>.</span>random()
+                
+                <span style=color:#09f;font-style:italic># recombination occurs when crossover &lt;= recombination rate</span>
+                <span style=color:#069;font-weight:700>if</span> crossover <span style=color:#555>&lt;=</span> recombination:
+                    v_trial<span style=color:#555>.</span>append(v_donor[k])
+
+                <span style=color:#09f;font-style:italic># recombination did not occur</span>
+                <span style=color:#069;font-weight:700>else</span>:
+                    v_trial<span style=color:#555>.</span>append(x_t[k])
+                    
+            <span style=color:#09f;font-style:italic>#--- GREEDY SELECTION (step #3.C) -------------+</span>
+
+            score_trial  <span style=color:#555>=</span> cost_func(v_trial)
+            score_target <span style=color:#555>=</span> cost_func(x_t)
+
+            <span style=color:#069;font-weight:700>if</span> score_trial <span style=color:#555>&lt;</span> score_target:
+                population[j] <span style=color:#555>=</span> v_trial
+                gen_scores<span style=color:#555>.</span>append(score_trial)
+                <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;   &gt;&#39;</span>,score_trial, v_trial
+
+            <span style=color:#069;font-weight:700>else</span>:
+                <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;   &gt;&#39;</span>,score_target, x_t
+                gen_scores<span style=color:#555>.</span>append(score_target)
+                
+    <span style=color:#069;font-weight:700>return</span> best_individual</code></pre></div><p>You might have noticed that I've skipped over step #4 which is the stopping criteria. This is again, in the interest of keeping the code as simple as possible. Because of this, the stopping criteria is simply when we have cycled through all the generations specified at initialization. Any number of stopping mechanisms from other optimization routines can be implemented here.</p><p>Putting everything together, adding a few lines for text output, score keeping, and some example cost functions, the final code looks like this (github repository -> <a target=_blank href=https://github.com/nathanrooy/differential-evolution-optimization-with-python/blob/master/DE.py>here</a>):</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#09f;font-style:italic>#------------------------------------------------------------------------------+</span>
+<span style=color:#09f;font-style:italic>#</span>
+<span style=color:#09f;font-style:italic>#   Nathan A. Rooy</span>
+<span style=color:#09f;font-style:italic>#   A simple, bare bones, implementation of differential evolution with Python</span>
+<span style=color:#09f;font-style:italic>#   August, 2017</span>
+<span style=color:#09f;font-style:italic>#</span>
+<span style=color:#09f;font-style:italic>#------------------------------------------------------------------------------+</span>
+
+<span style=color:#09f;font-style:italic>#--- IMPORT DEPENDENCIES ------------------------------------------------------+</span>
+
+<span style=color:#069;font-weight:700>import</span> <span style=color:#0cf;font-weight:700>random</span>
+
+<span style=color:#09f;font-style:italic>#--- EXAMPLE COST FUNCTIONS ---------------------------------------------------+</span>
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>func1</span>(x):
+    <span style=color:#09f;font-style:italic># Sphere function, use any bounds, f(0,...,0)=0</span>
+    <span style=color:#069;font-weight:700>return</span> <span style=color:#366>sum</span>([x[i]<span style=color:#555>**</span><span style=color:#f60>2</span> <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(x))])
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>func2</span>(x):
+    <span style=color:#09f;font-style:italic># Beale&#39;s function, use bounds=[(-4.5, 4.5),(-4.5, 4.5)], f(3,0.5)=0.</span>
+    term1 <span style=color:#555>=</span> (<span style=color:#f60>1.500</span> <span style=color:#555>-</span> x[<span style=color:#f60>0</span>] <span style=color:#555>+</span> x[<span style=color:#f60>0</span>]<span style=color:#555>*</span>x[<span style=color:#f60>1</span>])<span style=color:#555>**</span><span style=color:#f60>2</span>
+    term2 <span style=color:#555>=</span> (<span style=color:#f60>2.250</span> <span style=color:#555>-</span> x[<span style=color:#f60>0</span>] <span style=color:#555>+</span> x[<span style=color:#f60>0</span>]<span style=color:#555>*</span>x[<span style=color:#f60>1</span>]<span style=color:#555>**</span><span style=color:#f60>2</span>)<span style=color:#555>**</span><span style=color:#f60>2</span>
+    term3 <span style=color:#555>=</span> (<span style=color:#f60>2.625</span> <span style=color:#555>-</span> x[<span style=color:#f60>0</span>] <span style=color:#555>+</span> x[<span style=color:#f60>0</span>]<span style=color:#555>*</span>x[<span style=color:#f60>1</span>]<span style=color:#555>**</span><span style=color:#f60>3</span>)<span style=color:#555>**</span><span style=color:#f60>2</span>
+    <span style=color:#069;font-weight:700>return</span> term1 <span style=color:#555>+</span> term2 <span style=color:#555>+</span> term3
+
+<span style=color:#09f;font-style:italic>#--- FUNCTIONS ----------------------------------------------------------------+</span>
+
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>ensure_bounds</span>(vec, bounds):
+
+    vec_new <span style=color:#555>=</span> []
+    <span style=color:#09f;font-style:italic># cycle through each variable in vector </span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(vec)):
+
+        <span style=color:#09f;font-style:italic># variable exceedes the minimum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&lt;</span> bounds[i][<span style=color:#f60>0</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>0</span>])
+
+        <span style=color:#09f;font-style:italic># variable exceedes the maximum boundary</span>
+        <span style=color:#069;font-weight:700>if</span> vec[i] <span style=color:#555>&gt;</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(bounds[i][<span style=color:#f60>1</span>])
+
+        <span style=color:#09f;font-style:italic># the variable is fine</span>
+        <span style=color:#069;font-weight:700>if</span> bounds[i][<span style=color:#f60>0</span>] <span style=color:#555>&lt;=</span> vec[i] <span style=color:#555>&lt;=</span> bounds[i][<span style=color:#f60>1</span>]:
+            vec_new<span style=color:#555>.</span>append(vec[i])
+        
+    <span style=color:#069;font-weight:700>return</span> vec_new
+
+
+<span style=color:#09f;font-style:italic>#--- MAIN ---------------------------------------------------------------------+</span>
+
+<span style=color:#069;font-weight:700>def</span> <span style=color:#c0f>main</span>(cost_func, bounds, popsize, mutate, recombination, maxiter):
+
+    <span style=color:#09f;font-style:italic>#--- INITIALIZE A POPULATION (step #1) ----------------+</span>
+    
+    population <span style=color:#555>=</span> []
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize):
+        indv <span style=color:#555>=</span> []
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(bounds)):
+            indv<span style=color:#555>.</span>append(random<span style=color:#555>.</span>uniform(bounds[j][<span style=color:#f60>0</span>],bounds[j][<span style=color:#f60>1</span>]))
+        population<span style=color:#555>.</span>append(indv)
+            
+    <span style=color:#09f;font-style:italic>#--- SOLVE --------------------------------------------+</span>
+
+    <span style=color:#09f;font-style:italic># cycle through each generation (step #2)</span>
+    <span style=color:#069;font-weight:700>for</span> i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>1</span>,maxiter<span style=color:#555>+</span><span style=color:#f60>1</span>):
+        <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;GENERATION:&#39;</span>,i
+
+        gen_scores <span style=color:#555>=</span> [] <span style=color:#09f;font-style:italic># score keeping</span>
+
+        <span style=color:#09f;font-style:italic># cycle through each individual in the population</span>
+        <span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>, popsize):
+
+            <span style=color:#09f;font-style:italic>#--- MUTATION (step #3.A) ---------------------+</span>
+            
+            <span style=color:#09f;font-style:italic># select three random vector index positions [0, popsize), not including current vector (j)</span>
+            canidates <span style=color:#555>=</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize)
+            canidates<span style=color:#555>.</span>remove(j)
+            random_index <span style=color:#555>=</span> random<span style=color:#555>.</span>sample(canidates, <span style=color:#f60>3</span>)
+
+            x_1 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>0</span>]]
+            x_2 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>1</span>]]
+            x_3 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>2</span>]]
+            x_t <span style=color:#555>=</span> population[j]     <span style=color:#09f;font-style:italic># target individual</span>
+
+            <span style=color:#09f;font-style:italic># subtract x3 from x2, and create a new vector (x_diff)</span>
+            x_diff <span style=color:#555>=</span> [x_2_i <span style=color:#555>-</span> x_3_i <span style=color:#069;font-weight:700>for</span> x_2_i, x_3_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_2, x_3)]
+
+            <span style=color:#09f;font-style:italic># multiply x_diff by the mutation factor (F) and add to x_1</span>
+            v_donor <span style=color:#555>=</span> [x_1_i <span style=color:#555>+</span> mutate <span style=color:#555>*</span> x_diff_i <span style=color:#069;font-weight:700>for</span> x_1_i, x_diff_i <span style=color:#000;font-weight:700>in</span> <span style=color:#366>zip</span>(x_1, x_diff)]
+            v_donor <span style=color:#555>=</span> ensure_bounds(v_donor, bounds)
+
+            <span style=color:#09f;font-style:italic>#--- RECOMBINATION (step #3.B) ----------------+</span>
+
+            v_trial <span style=color:#555>=</span> []
+            <span style=color:#069;font-weight:700>for</span> k <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#366>len</span>(x_t)):
+                crossover <span style=color:#555>=</span> random<span style=color:#555>.</span>random()
+                <span style=color:#069;font-weight:700>if</span> crossover <span style=color:#555>&lt;=</span> recombination:
+                    v_trial<span style=color:#555>.</span>append(v_donor[k])
+
+                <span style=color:#069;font-weight:700>else</span>:
+                    v_trial<span style=color:#555>.</span>append(x_t[k])
+                    
+            <span style=color:#09f;font-style:italic>#--- GREEDY SELECTION (step #3.C) -------------+</span>
+
+            score_trial  <span style=color:#555>=</span> cost_func(v_trial)
+            score_target <span style=color:#555>=</span> cost_func(x_t)
+
+            <span style=color:#069;font-weight:700>if</span> score_trial <span style=color:#555>&lt;</span> score_target:
+                population[j] <span style=color:#555>=</span> v_trial
+                gen_scores<span style=color:#555>.</span>append(score_trial)
+                <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;   &gt;&#39;</span>,score_trial, v_trial
+
+            <span style=color:#069;font-weight:700>else</span>:
+                <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;   &gt;&#39;</span>,score_target, x_t
+                gen_scores<span style=color:#555>.</span>append(score_target)
+
+        <span style=color:#09f;font-style:italic>#--- SCORE KEEPING --------------------------------+</span>
+
+        gen_avg <span style=color:#555>=</span> <span style=color:#366>sum</span>(gen_scores) <span style=color:#555>/</span> popsize                         <span style=color:#09f;font-style:italic># current generation avg. fitness</span>
+        gen_best <span style=color:#555>=</span> <span style=color:#366>min</span>(gen_scores)                                  <span style=color:#09f;font-style:italic># fitness of best individual</span>
+        gen_sol <span style=color:#555>=</span> population[gen_scores<span style=color:#555>.</span>index(<span style=color:#366>min</span>(gen_scores))]     <span style=color:#09f;font-style:italic># solution of best individual</span>
+
+        <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;      &gt; GENERATION AVERAGE:&#39;</span>,gen_avg
+        <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;      &gt; GENERATION BEST:&#39;</span>,gen_best
+        <span style=color:#069;font-weight:700>print</span> <span style=color:#c30>&#39;         &gt; BEST SOLUTION:&#39;</span>,gen_sol,<span style=color:#c30>&#39;</span><span style=color:#c30;font-weight:700>\n</span><span style=color:#c30>&#39;</span>
+
+    <span style=color:#069;font-weight:700>return</span> gen_sol
+
+<span style=color:#09f;font-style:italic>#--- CONSTANTS ----------------------------------------------------------------+</span>
+
+cost_func <span style=color:#555>=</span> func1                   <span style=color:#09f;font-style:italic># Cost function</span>
+bounds <span style=color:#555>=</span> [(<span style=color:#555>-</span><span style=color:#f60>1</span>,<span style=color:#f60>1</span>),(<span style=color:#555>-</span><span style=color:#f60>1</span>,<span style=color:#f60>1</span>)]            <span style=color:#09f;font-style:italic># Bounds [(x1_min, x1_max), (x2_min, x2_max),...]</span>
+popsize <span style=color:#555>=</span> <span style=color:#f60>10</span>                        <span style=color:#09f;font-style:italic># Population size, must be &gt;= 4</span>
+mutate <span style=color:#555>=</span> <span style=color:#f60>0.5</span>                        <span style=color:#09f;font-style:italic># Mutation factor [0,2]</span>
+recombination <span style=color:#555>=</span> <span style=color:#f60>0.7</span>                 <span style=color:#09f;font-style:italic># Recombination rate [0,1]</span>
+maxiter <span style=color:#555>=</span> <span style=color:#f60>20</span>                        <span style=color:#09f;font-style:italic># Max number of generations (maxiter)</span>
+
+<span style=color:#09f;font-style:italic>#--- RUN ----------------------------------------------------------------------+</span>
+
+main(cost_func, bounds, popsize, mutate, recombination, maxiter)
+
+<span style=color:#09f;font-style:italic>#--- END ----------------------------------------------------------------------+</span></code></pre></div><p>That's it! Differential evolution is a very simple evolutionary routine that produces great results when used correctly. I hope this was helpful. Thanks for reading!</p><p><center style="letter-spacing:1.25em; font-size:1.5em; padding-bottom:0.5em; padding-top:0.5em">·····</center></p><p>Notes:
+In step #3, this implementation differs from most DE algorithms in that we cycle through each member of the population, generate a donor vector, then perform selection. In this setup, every member of the population becomes a target vector at some point which means that every individual has the possibility of being replaced. In most DE implementations, the target vector is randomly chosen. In my experience using DE (both in aerodynamic shape optimization, as well as in deep learning applications), I have found that the current implementation works much better. The standard DE implementation might be slightly more stochastic in nature, but whatever... If, you're interested in the "standard" DE implementation swap out the lines in the above code with the following:</p><div class=highlight><pre style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#09f;font-style:italic># cycle through each individual in the population</span>
+<span style=color:#069;font-weight:700>for</span> j <span style=color:#000;font-weight:700>in</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>, popsize):
+
+    <span style=color:#09f;font-style:italic>#--- MUTATION ---------------------------------+</span>
+    
+    <span style=color:#09f;font-style:italic># select four random vector index positions, range = [0, popsize)</span>
+    canidates <span style=color:#555>=</span> <span style=color:#366>range</span>(<span style=color:#f60>0</span>,popsize)
+    random_index <span style=color:#555>=</span> random<span style=color:#555>.</span>sample(canidates, <span style=color:#f60>4</span>)
+
+    x_1 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>0</span>]]
+    x_2 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>1</span>]]
+    x_3 <span style=color:#555>=</span> population[random_index[<span style=color:#f60>2</span>]]
+    x_t <span style=color:#555>=</span> population[random_index[<span style=color:#f60>3</span>]]</code></pre></div></div><div class=separator><ul class=flat><li><a onclick="plausible('home-icon',{props:{method:'Differential Evolution Optimization from Scratch with Python'}})" href=/><img style=min-width:30px;position:relative;top:5px;width:20px;height:20px src=/icons/home_feather.svg alt="home page icon"></a></li><li><a onclick="plausible('about-icon',{props:{method:'Differential Evolution Optimization from Scratch with Python'}})" href=/about><img style=min-width:30px;position:relative;top:5px;width:20px;height:20px src=/icons/user_feather.svg alt="about page icon"></a></li><li><a onclick="plausible('rss-icon',{props:{method:'Differential Evolution Optimization from Scratch with Python'}})" href=/index.xml target=_blank><img style=min-width:30px;position:relative;top:5px;width:20px;height:20px src=/icons/rss_feather_black.svg alt="rss page icon"></a></li></ul></div></div><footer><center>&copy; <a href=/about>Nathan A. Rooy</a>.<br>Built with <a target=_blank rel="noopener noreferrer" href=https://gohugo.io/>Hugo</a>.
+Powered by <a target=_blank rel="noopener noreferrer" href=http://www.github.com>GitHub</a></center></footer></body></html>
