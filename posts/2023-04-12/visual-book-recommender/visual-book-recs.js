@@ -82,7 +82,7 @@ const display_metadata = async(click_latlng) => {
         console.log('      > no match found...')
         console.log('   > fetching block...');
         //const res = await fetch(`metadata/blocks/${block_x}/${block_y}.txt`, {
-        const res = await fetch(`https://visual-book-recommender-v1.s3.amazonaws.com/blocks/${block_x}/${block_y}.txt`, {
+        const res = await fetch(`https://visual-book-recommender-v1.s3.amazonaws.com/blocks/${block_x}/${block_y}.csv`, {
             method: 'get',
             headers: {'content-type': 'text/csv;charset=UTF-8',}
         });
