@@ -280,14 +280,14 @@
 &lt;link href="jquery-ui.min.css" rel='stylesheet'/>
 &lt;script src="jquery.min.js">&lt;/script>
 &lt;script src="jquery-ui.min.js">&lt;/script>
-&lt;script src="leaflet_v1.3.1.js">&lt;/script>
-&lt;script src="leaflet-side-by-side.js">&lt;/script>
-&lt;script src="post.js">&lt;/script>
-&lt;link href="leaflet_v1.3.1.css" rel="stylesheet"/>
-&lt;link href="leaflet.fullscreen.css" rel='stylesheet'/>
-&lt;script src="Leaflet.fullscreen.min.js">&lt;/script>
-&lt;script src="leaflet-hash.js">&lt;/script>
 &lt;script src="jquery.ui.touch-punch.min.js">&lt;/script>
+&lt;script src="leaflet_v1.3.1.js">&lt;/script>
+&lt;link href="leaflet_v1.3.1.css" rel="stylesheet"/>
+&lt;script src='https://nathan.fun/js/leaflet-side-by-side/2.2.0/leaflet-side-by-side.min.js'>&lt;/script>
+&lt;link href='https://nathan.fun/js/leaflet-fullscreen/1.0.2/leaflet.fullscreen.css' rel='stylesheet'>
+&lt;script src='https://nathan.fun/js/leaflet-fullscreen/1.0.2/Leaflet.fullscreen.min.js'>&lt;/script>
+&lt;script src='https://nathan.fun/js/leaflet-hash/leaflet-hash.js'>&lt;/script>
+&lt;script src="post.js">&lt;/script>
 &lt;p>A while back, someone posted on the Cincinanti subreddit an interesting mapping artifact. I didn&amp;rsquo;t know the answer to the question, but it got me thinking about what else has changed over time in Cincinnati in regards to maps and names? Luckly the &lt;a target="_blank" href="https://digital.cincinnatilibrary.org/">Cincinnati Public Library Digital Archives&lt;/a> has a wealth of information on just this topic.&lt;/p>
 &lt;p style="background-color: var(--background-light); padding-top:2rem; padding-bottom:2rem;">
  &lt;img style="height:500px; margin-top:0rem; margin-bottom:0rem;" src="Screenshot_20180831-123158.png" alt="cincinnati reddit mapping mystery" />
