@@ -7,19 +7,19 @@
 &lt;p>Well, I&amp;rsquo;m nearly two years behind on posting this, but anyway, here we are. I started this thing right at the beginning of &amp;ldquo;lockdown&amp;rdquo; and at the time we had just left our place in Manhattan for a lake house in Ohio. With ample space and views of water I began to mentally reprioritize my side-project backlog. It wasn&amp;rsquo;t long before I started dabbling with the idea of finally getting into 3D printing. I&amp;rsquo;ve worked with various additive manufacturing techniques in the past through work, but never on a hobby/personal level. I also wanted a kayak so I could explore the lake so it seemed like a good fit.&lt;/p></description></item><item><title>Turboshtein</title><link>/posts/2022-11-03/turboshtein/</link><pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate><guid>/posts/2022-11-03/turboshtein/</guid><description>&lt;h2 id="background">Background&lt;/h2>
 &lt;p>I didn&amp;rsquo;t study computer science so the usefulness of bit shifts and other &lt;a href="https://en.wikipedia.org/wiki/Bitwise_operation">bitwise operations&lt;/a> outside of low-level programming have always been a bit of a gray area for me. I finally gave in and decided to spend some time reading up on the subject and ended up implementing the &lt;em>Myers bit-vector algorithm&lt;/em>&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup> for computing &lt;a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein edit distance&lt;/a>. I was fairly happy with the results so I wrapped the original C code in Python and uploaded it to &lt;a href="https://pypi.org/project/turboshtein/">PyPI&lt;/a>. Coincidentally, it&amp;rsquo;s also pretty fast.&lt;/p></description></item><item><title>Playing around with Dall·E 2</title><link>/posts/2022-05-08/dall-e-2/</link><pubDate>Sun, 08 May 2022 00:00:00 +0000</pubDate><guid>/posts/2022-05-08/dall-e-2/</guid><description>&lt;p>About a month ago OpenAI reached out to a few of my coworkers and myself and gave us early access to the new &lt;a href="https://openai.com/dall-e-2/" target="_blank">Dall·E 2&lt;/a> model. I&amp;rsquo;ve been playing around with it in my freetime and wanted share some of the images. Here are some of my favorites along with the prompt I used to generate them.&lt;/p>
 &lt;div class="img-block" style="margin-top:5rem;">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.52.13.jpg" loading="eager" alt="a monkey wearing a rocket pack flying over the jungle, digital art">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.52.13.jpg" loading="eager" alt="a monkey wearing a rocket pack flying over the jungle, digital art">
  &lt;div class="dalle-prompt">
  &lt;i>"a monkey wearing a rocket pack flying over the jungle, digital art"&lt;/i>
  &lt;/div>
 &lt;/div>
 &lt;div class="img-block">
- &lt;img src="imgs_web/DALL·E 2022-04-28 09.16.54.jpg" loading="eager" alt="a tiger with fur made out of electricity, digital art">
+ &lt;img src="imgs_web/DALL-E 2022-04-28 09.16.54.jpg" loading="eager" alt="a tiger with fur made out of electricity, digital art">
  &lt;div class="dalle-prompt">
  &lt;i>"a tiger with fur made out of electricity, digital art"&lt;/i>
  &lt;/div>
 &lt;/div>
 &lt;div class="img-block">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.45.31.jpg" loading="eager" alt="a cowboy riding a giant eagle, digital art">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.45.31.jpg" loading="eager" alt="a cowboy riding a giant eagle, digital art">
  &lt;div class="dalle-prompt">
  &lt;i>"a cowboy riding a giant eagle, digital art"&lt;/i>
  &lt;/div>
@@ -28,13 +28,13 @@
  &lt;table class="three-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-25 10.28.43.jpg" loading="lazy" alt="a city on an island floating in the sky with clouds in the background, digital art - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 10.28.43.jpg" loading="lazy" alt="a city on an island floating in the sky with clouds in the background, digital art - version 1">
  &lt;/td>
  &lt;td class="inside">
- &lt;img src="imgs_web/DALL·E 2022-04-25 10.28.35.jpg" loading="lazy" alt="a city on an island floating in the sky with clouds in the background, digital art - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 10.28.35.jpg" loading="lazy" alt="a city on an island floating in the sky with clouds in the background, digital art - version 2">
  &lt;/td>
  &lt;td class="right">
-	 &lt;img src="imgs_web/DALL·E 2022-04-25 10.31.16.jpg" loading="lazy" alt="a city on an island floating in the sky with clouds in the background, digital art - version 3">
+	 &lt;img src="imgs_web/DALL-E 2022-04-25 10.31.16.jpg" loading="lazy" alt="a city on an island floating in the sky with clouds in the background, digital art - version 3">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -46,18 +46,18 @@
  &lt;table class="two-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-28 09.21.14.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-04-28 09.21.14.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 1">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-04-28 09.20.22.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-04-28 09.20.22.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 2">
  &lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-28 09.20.01.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 3">
+ &lt;img src="imgs_web/DALL-E 2022-04-28 09.20.01.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 3">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-04-28 09.22.37.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 4">
+ &lt;img src="imgs_web/DALL-E 2022-04-28 09.22.37.jpg" loading="lazy" alt="a wolf with fur made of neon light, digital art - version 4">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -69,10 +69,10 @@
  &lt;table class="two-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.21.28.jpg" loading="lazy" alt="a futuristic underground city, digital art - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.21.28.jpg" loading="lazy" alt="a futuristic underground city, digital art - version 1">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.23.18.jpg" loading="lazy" alt="a futuristic underground city, digital art - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.23.18.jpg" loading="lazy" alt="a futuristic underground city, digital art - version 2">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -84,10 +84,10 @@
  &lt;table class="two-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-05-08 11.40.08.jpg" loading="lazy" alt="a small village in the mountains rendered as a low poly model - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-05-08 11.40.08.jpg" loading="lazy" alt="a small village in the mountains rendered as a low poly model - version 1">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-05-08 11.18.45.jpg" loading="lazy" alt="a small village in the mountains rendered as a low poly model - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-05-08 11.18.45.jpg" loading="lazy" alt="a small village in the mountains rendered as a low poly model - version 2">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -96,7 +96,7 @@
  &lt;/div>
 &lt;/div>
 &lt;div class="img-block">
- &lt;img src="imgs_web/DALL·E 2022-04-22 13.58.51.jpg" loading="lazy" alt="a synthwave bike ride through the clouds">
+ &lt;img src="imgs_web/DALL-E 2022-04-22 13.58.51.jpg" loading="lazy" alt="a synthwave bike ride through the clouds">
  &lt;div class="dalle-prompt">
  &lt;i>"a synthwave bike ride through the clouds"&lt;/i>
  &lt;/div>
@@ -105,10 +105,10 @@
  &lt;table class="two-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-22 14.06.22.jpg" loading="lazy" alt="biking through a beautiful city depicted as an exploding nebula, oil painting - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-04-22 14.06.22.jpg" loading="lazy" alt="biking through a beautiful city depicted as an exploding nebula, oil painting - version 1">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-04-22 14.19.42.jpg" loading="lazy" alt="biking through a beautiful city depicted as an exploding nebula, oil painting - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-04-22 14.19.42.jpg" loading="lazy" alt="biking through a beautiful city depicted as an exploding nebula, oil painting - version 2">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -120,10 +120,10 @@
  &lt;table class="two-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.41.16.jpg" loading="lazy" alt="a cowboy riding a giant lizard in a rodeo, digital art - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.41.16.jpg" loading="lazy" alt="a cowboy riding a giant lizard in a rodeo, digital art - version 1">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.43.01.jpg" loading="lazy" alt="a cowboy riding a giant lizard in a rodeo, digital art - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.43.01.jpg" loading="lazy" alt="a cowboy riding a giant lizard in a rodeo, digital art - version 2">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -135,10 +135,10 @@
  &lt;table class="two-img">
  &lt;tr>
  &lt;td class="left">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.27.59.jpg" loading="lazy" alt="a futuristic city desert oasis full of gardens, people, and neon jellyfish in the background, digital art - version 1">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.27.59.jpg" loading="lazy" alt="a futuristic city desert oasis full of gardens, people, and neon jellyfish in the background, digital art - version 1">
  &lt;/td>
  &lt;td class="right">
- &lt;img src="imgs_web/DALL·E 2022-04-25 12.28.11.jpg" loading="lazy" alt="a futuristic city desert oasis full of gardens, people, and neon jellyfish in the background, digital art - version 2">
+ &lt;img src="imgs_web/DALL-E 2022-04-25 12.28.11.jpg" loading="lazy" alt="a futuristic city desert oasis full of gardens, people, and neon jellyfish in the background, digital art - version 2">
  &lt;/td>
  &lt;/tr>
  &lt;/table>
@@ -147,7 +147,7 @@
  &lt;/div>
 &lt;/div>
 &lt;div class="img-block" style="margin-bottom:2rem;">
- &lt;img src="imgs_web/DALL·E 2022-05-08 11.51.51.jpg" loading="lazy" alt="a portrait of a squirrel with a hat and baseball bat oil painting">
+ &lt;img src="imgs_web/DALL-E 2022-05-08 11.51.51.jpg" loading="lazy" alt="a portrait of a squirrel with a hat and baseball bat oil painting">
  &lt;div class="dalle-prompt">
  &lt;i>"a portrait of a squirrel with a hat and baseball bat oil painting"&lt;/i>
  &lt;/div>
