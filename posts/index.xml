@@ -6,65 +6,6 @@
 &lt;p>I have this long running conjecture that used book stores are superior to commercial book outlets (including Amazon) for discovering books. One of the reasons for this I think has less to do with a skewed explore/exploit strategy, and more to do with the way exploratory suggestions are sourced. I think financial pressure skews exploratory search suggestions towards oversampling newer books rather than older adjacent books. I get that though; oversampling newer books is a simple way to help combat the rich getting richer trap. The problem is that I&amp;rsquo;m biased against new books; I think they&amp;rsquo;re mostly noise. Used books stores on the other hand are curated by humans for other humans (who probably live nearby). If I ask for a book that&amp;rsquo;s like &amp;ldquo;x&amp;rdquo; they&amp;rsquo;re not going to point me to the newer version of &amp;ldquo;x&amp;rdquo;, they&amp;rsquo;re going to show me books &amp;ldquo;y&amp;rdquo; and &amp;ldquo;z&amp;rdquo;. There are additional reasons that go beyond just oversampling newer books which I&amp;rsquo;ll touch on later. I&amp;rsquo;ll also admit that all the supporting evidence I have is completely anecdotal, but still, when I want a new book I don&amp;rsquo;t pull out my phone, I walk down the street to the used book store.&lt;/p></description></item><item><title>3D printing a full-size kayak</title><link>/posts/2023-03-12/3d-printed-kayak/</link><pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate><guid>/posts/2023-03-12/3d-printed-kayak/</guid><description>&lt;h2>Introduction&lt;/h2>
 &lt;p>Well, I&amp;rsquo;m nearly two years behind on posting this, but anyway, here we are. I started this thing right at the beginning of &amp;ldquo;lockdown&amp;rdquo; and at the time we had just left our place in Manhattan for a lake house in Ohio. With ample space and views of water I began to mentally reprioritize my side-project backlog. It wasn&amp;rsquo;t long before I started dabbling with the idea of finally getting into 3D printing. I&amp;rsquo;ve worked with various additive manufacturing techniques in the past through work, but never on a hobby/personal level. I also wanted a kayak so I could explore the lake so it seemed like a good fit.&lt;/p></description></item><item><title>Turboshtein</title><link>/posts/2022-11-03/turboshtein/</link><pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate><guid>/posts/2022-11-03/turboshtein/</guid><description>&lt;h2 id="background">Background&lt;/h2>
 &lt;p>I didn&amp;rsquo;t study computer science so the usefulness of bit shifts and other &lt;a href="https://en.wikipedia.org/wiki/Bitwise_operation">bitwise operations&lt;/a> outside of low-level programming have always been a bit of a gray area for me. I finally gave in and decided to spend some time reading up on the subject and ended up implementing the &lt;em>Myers bit-vector algorithm&lt;/em>&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup> for computing &lt;a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein edit distance&lt;/a>. I was fairly happy with the results so I wrapped the original C code in Python and uploaded it to &lt;a href="https://pypi.org/project/turboshtein/">PyPI&lt;/a>. Coincidentally, it&amp;rsquo;s also pretty fast.&lt;/p></description></item><item><title>Playing around with Dall·E 2</title><link>/posts/2022-05-08/dall-e-2/</link><pubDate>Sun, 08 May 2022 00:00:00 +0000</pubDate><guid>/posts/2022-05-08/dall-e-2/</guid><description>&lt;p>About a month ago OpenAI reached out to a few of my coworkers and myself and gave us early access to the new &lt;a href="https://openai.com/dall-e-2/" target="_blank">Dall·E 2&lt;/a> model. I&amp;rsquo;ve been playing around with it in my freetime and wanted share some of the images. Here are some of my favorites along with the prompt I used to generate them.&lt;/p>
-&lt;style> 
- @media only screen and (min-width: 850px) {
- .markdown table {
- width: 90vw;
- max-height: 620px;
- margin-left: 50%;
- transform: translateX(-50%);
- }
-
- .three-img {
- /* max-width: calc(1860px + 2rem); */
- max-width: 1240px;
- }
-
- .two-img {
- max-width: 1240px;
- }
-
- .img-block {
- margin-bottom: 12rem;
- }
- }
- 
- @media only screen and (max-width: 849px) {
- .img-block {
- margin-bottom: 5rem;
- }
- }
-
- .dalle-prompt {
- text-align: center;
- padding-top: 1rem;
- }
- 
-
- .markdown table {
- padding-bottom: 0;
- margin-bottom: 0;
- }
-
- .markdown img {
- padding-bottom: 1rem;
- margin: 0;
- }
-
- .left {
- padding-right: 0.5rem;
- }
-
- .right {
- padding-left: 0.5rem;
-
- }
-
- .inside {
- padding-left: 0.5rem;
- padding-right: 0.5rem;
- }
-&lt;/style>
 &lt;div class="img-block" style="margin-top:5rem;">
  &lt;img src="imgs_web/DALL·E 2022-04-25 12.52.13.jpg" loading="eager" alt="a monkey wearing a rocket pack flying over the jungle, digital art">
  &lt;div class="dalle-prompt">
@@ -226,17 +167,16 @@
 &lt;/ol>
 &lt;p>Given this simple rule set, the results tend to yield some really interesting forms often resembling those derived from &lt;a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Space-filling_curve">space-filling curves&lt;/a>.&lt;/p></description></item><item><title>Making STL frontal area calculations easier</title><link>/posts/2021-03-26/compute-stl-frontal-area/</link><pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate><guid>/posts/2021-03-26/compute-stl-frontal-area/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>When working with aerodynamic properties such as &lt;a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Drag_coefficient">drag&lt;/a>, it&amp;rsquo;s common practice to normalize these values against some sort of reference area. For most ground vehicles with a pressure dominated drag contribution this ends up being the cross-sectional area as seen from the front (or projected onto the inlet plane). Most of the time, acquiring these values is pretty easy, especially if you&amp;rsquo;re dealing with some nice clean CAD files. Annoyingly though, sometimes all you have are the non-parametric, triangulated geometry (&lt;a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/STL_(file_format)">STL&lt;/a>) files. When you find yourself in this situation, there are only a few options (Blender, ParaView, etc..) and they&amp;rsquo;re all fairly tedious, time consuming, and not as precise as it could be. This is an annoying bottleneck which is further exacerbated in fast paced work environments such as motorsport. Because of this, I wrote a simple CLI called &lt;a target="_blank" rel="noopener noreferrer" href="https://github.com/nathanrooy/p-area">pArea&lt;/a> which aims to reduce this process down to a single command.&lt;/p></description></item><item><title>Improved routing for OSMnx with Taxicab</title><link>/posts/2021-03-12/osmnx-openstreetmap-taxicab-routing/</link><pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate><guid>/posts/2021-03-12/osmnx-openstreetmap-taxicab-routing/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
-&lt;p>If you’ve ever worked on the geospatial side of data science or just have a passion for maps and code, you’ve probably used &lt;a target="_blank" rel="noopener noreferrer" href="https://github.com/gboeing/osmnx">OSMnx&lt;/a>. It’s a solid Python package that fills the void between &lt;a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/">OpenStreetMap&lt;/a> and &lt;a target="_blank" rel="noopener noreferrer" href="https://github.com/networkx/networkx">NetworkX&lt;/a>. I’ve used it for both work and personal projects, and I really like it a lot. The one thing though that I’ve always found lacking however is the routing functionality&amp;hellip; Let&amp;rsquo;s work through a simple example that demonstrates what I mean. When routing between two longitude/latitude pairs, one first needs to find the nearest network nodes like so:&lt;/p></description></item><item><title>Biking from Cleveland to Cincinnati</title><link>/posts/2020-09-17/bikepacking-cleveland-to-cincinnati/</link><pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate><guid>/posts/2020-09-17/bikepacking-cleveland-to-cincinnati/</guid><description>&lt;style> 
- .img-block {
- margin-bottom: 7rem;
- }
-
- .markdown img {
- padding-bottom: 1rem;
- margin: 0;
- }
-&lt;/style>
-&lt;p>The idea of biking from Cleveland to Cincinnati has been floating around in my adventure backlog for at least ten years now. It&amp;rsquo;s a three and a half hour drive that I made many times throughout college and as you&amp;rsquo;d expect, it&amp;rsquo;s pretty boring. The bike ride on the other hand was four days of beautiful scenery, small towns, and good food.&lt;/p></description></item><item><title>Effective Simulated Annealing with Python</title><link>/posts/2020-05-14/simulated-annealing-with-python/</link><pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate><guid>/posts/2020-05-14/simulated-annealing-with-python/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>If you’ve ever worked on the geospatial side of data science or just have a passion for maps and code, you’ve probably used &lt;a target="_blank" rel="noopener noreferrer" href="https://github.com/gboeing/osmnx">OSMnx&lt;/a>. It’s a solid Python package that fills the void between &lt;a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/">OpenStreetMap&lt;/a> and &lt;a target="_blank" rel="noopener noreferrer" href="https://github.com/networkx/networkx">NetworkX&lt;/a>. I’ve used it for both work and personal projects, and I really like it a lot. The one thing though that I’ve always found lacking however is the routing functionality&amp;hellip; Let&amp;rsquo;s work through a simple example that demonstrates what I mean. When routing between two longitude/latitude pairs, one first needs to find the nearest network nodes like so:&lt;/p></description></item><item><title>Biking from Cleveland to Cincinnati</title><link>/posts/2020-09-17/bikepacking-cleveland-to-cincinnati/</link><pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate><guid>/posts/2020-09-17/bikepacking-cleveland-to-cincinnati/</guid><description>&lt;p>The idea of biking from Cleveland to Cincinnati has been floating around in my adventure backlog for at least ten years now. It&amp;rsquo;s a three and a half hour drive that I made many times throughout college and as you&amp;rsquo;d expect, it&amp;rsquo;s pretty boring. The bike ride on the other hand was four days of beautiful scenery, small towns, and good food.&lt;/p>
+&lt;div class="img-block" style="margin-top:3rem;">
+ &lt;picture>
+ &lt;source type="image/webp" srcset="imgs-web/DSCF1501_660x_web.webp" />
+ &lt;img
+ src="imgs-web/DSCF1501_660x_web.jpg"
+ loading="eager"
+ alt="We started our trip from edgewater park in cleveland" />
+ &lt;/picture>
+ &lt;p>&lt;b>DAY 1:&lt;/b> We started off Saturday morning from my brother's place in Tremont by first biking in the opposite direction for the first few miles. I insisted that we should begin our adventure with some sort of "official" starting point and Edgewater Park seemed like a good spot.&lt;/p></description></item><item><title>Effective Simulated Annealing with Python</title><link>/posts/2020-05-14/simulated-annealing-with-python/</link><pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate><guid>/posts/2020-05-14/simulated-annealing-with-python/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>I use some form of optimization on a daily basis, whether it&amp;rsquo;s for work or personal projects. Something else I do on a daily basis is avoid &lt;a target="_blank" href="https://en.wikipedia.org/wiki/Simulated_annealing">simulated annealing&lt;/a>. I&amp;rsquo;ve always associated simulated annealing with inefficiency. Yes, it&amp;rsquo;s a global optimizer, but at what cost? In most situations I&amp;rsquo;ve been able to achieve optimal or near-optimal results in a substantially quicker time using various other methods (&lt;a terget="_blank" href="https://nathanrooy.github.io/posts/2016-08-17/simple-particle-swarm-optimization-with-python/">particle swarm&lt;/a>, &lt;a target="_blank" href="https://nathanrooy.github.io/posts/2017-08-27/simple-differential-evolution-with-python/">genetic/evolutionary&lt;/a>, etc&amp;hellip;). So what&amp;rsquo;s the deal?&lt;/p></description></item><item><title>Visualizing One Hundred Years of Cincinnati Maps</title><link>/posts/2019-11-27/georeferencing-historical-maps-of-cincinnati/</link><pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate><guid>/posts/2019-11-27/georeferencing-historical-maps-of-cincinnati/</guid><description>&lt;h2>Introduction&lt;/h2>
 &lt;link href="jquery-ui.min.css" rel='stylesheet'/>
 &lt;script src="jquery.min.js">&lt;/script>

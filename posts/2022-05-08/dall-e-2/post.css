@@ -1,0 +1,58 @@
+
+@media only screen and (min-width: 850px) {
+    .markdown table {
+        width: 90vw;
+        max-height: 620px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .three-img {
+        /* max-width: calc(1860px + 2rem); */
+        max-width: 1240px;
+    }
+
+    .two-img {
+        max-width: 1240px;
+    }
+
+    .img-block {
+        margin-bottom: 12rem;
+    }
+}
+
+    @media only screen and (max-width: 849px) {
+    .img-block {
+        margin-bottom: 5rem;
+    }
+    }
+
+.dalle-prompt {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+
+.markdown table {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.markdown img {
+    padding-bottom: 1rem;
+    margin: 0;
+}
+
+.left {
+    padding-right: 0.5rem;
+}
+
+.right {
+    padding-left: 0.5rem;
+
+}
+
+.inside {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
