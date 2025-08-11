@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>The Age of Cincinnati - Full Screen Awesomeness</title>
+
+    <meta charset="utf-8" />
+    <meta content="https://nry.me" property="og:site_name">
+    <meta content="https://nry.me" property="twitter:domain">
+    <meta content="https://nry.me/posts/2017-02-15/the-age-of-cincinnati/full-screen.html" property="og:url">
+    <meta content="https://nry.me/posts/2017-02-15/the-age-of-cincinnati/og-image-300x200.png" name="twitter:image">
+    <meta content="https://nry.me/posts/2017-02-15/the-age-of-cincinnati/og-image-300x200.png" property="og:image">
+    <meta content="https://nry.me/posts/2017-02-15/the-age-of-cincinnati/og-image-300x200.png" name="thumbnail">
+
+    <meta content="Nathan A. Rooy" name="copyright">
+    <meta content="en_US" property="og:locale">
+    <meta content="article" property="og:type" >
+    <meta content="The Age of Cincinnati" property="og:title">
+    <meta content="The age of every building in Cincinnati and Hamilton County mapped out" name="twitter:description">
+    <meta content="The age of every building in Cincinnati and Hamilton County mapped out" name="description">
+
+    <link href="https://nry.me/favicon/favicon.png" rel="icon" type="image/png">
+    <link href="https://nry.me/posts/2017-02-15/the-age-of-cincinnati/full-screen.html" rel="canonical">
+
+    <script defer="" data-domain="nry.me" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+    <style>
+        info{
+            z-index: 10;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+    
+    
+<body>
+    
+    <div id="map" style="position: absolute; z-index: 0;"></div>
+    <div id="info" style="position: absolute; z-index: 10; height: 100%; width: 100%; pointer-events: none;">
+        <img src="legend-full-screen.png" style="position:absolute; right:0px; top:0px; padding:10px;">
+    </div>
+
+    <link href="/js/leaflet/1.9.4/leaflet.css" rel="stylesheet"/>
+    <script src="/js/leaflet/1.9.4/leaflet.js"></script>
+
+    <link href="/js/leaflet-fullscreen/1.0.2/leaflet.fullscreen.css" rel='stylesheet'>
+    <script src="/js/leaflet-fullscreen/1.0.2/Leaflet.fullscreen.min.js"></script>
+
+    <script>
+        var map = L.map('map').setView([39.1058,-84.5215], 14);
+        
+        L.tileLayer('https://api.mapbox.com/styles/v1/nathanrooy/cizyeqgcc004m2ssj7fv4ivwa/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmF0aGFucm9veSIsImEiOiJjaXo4eDhjd3UwMTIwMzJtbnJremZmeTRpIn0.DzrR916YQnKzrYEYXlPHtQ', {
+            maxZoom: 18,
+            minZoom: 13,
+            attribution: 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            id: 'mapbox.streets'
+            }).addTo(map);
+            map.addControl(new L.Control.Fullscreen());
+
+        //Show About Information
+        function aboutfunc(box){
+        $(box).toggle();
+        };
+    </script>  
+</body>
+</html>
