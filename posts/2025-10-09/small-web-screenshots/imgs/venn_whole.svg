@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="660"
+   height="250"
+   viewBox="0 0 174.625 66.145833"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="venn_whole.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.1407675"
+     inkscape:cx="345.81981"
+     inkscape:cy="147.70757"
+     inkscape:window-width="1728"
+     inkscape:window-height="966"
+     inkscape:window-x="-71"
+     inkscape:window-y="101"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showguides="true">
+    <sodipodi:guide
+       position="87.3125,119.90488"
+       orientation="-1,0"
+       id="guide1"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="13.708822,33.072917"
+       orientation="0,1"
+       id="guide2"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="display:inline;fill:#f5f5f5;fill-opacity:0.80000001;stroke:#000000;stroke-width:0.26458333;stroke-linecap:square;stroke-opacity:0.408935;stroke-dasharray:none"
+       id="path1"
+       cx="61.078278"
+       cy="32.829121"
+       r="26.208334" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Avenir Next';-inkscape-font-specification:'Avenir Next';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:square;stroke-opacity:1"
+       x="60.925095"
+       y="27.131367"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58611px;font-family:'Avenir Next';-inkscape-font-specification:'Avenir Next';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="60.925095"
+         y="27.131367">the top </tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58611px;font-family:'Avenir Next';-inkscape-font-specification:'Avenir Next';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="60.925095"
+         y="34.186916"
+         id="tspan3">one million</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Avenir Next';-inkscape-font-specification:'Avenir Next';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="60.925095"
+         y="41.242466"
+         id="tspan2"><tspan
+   style="font-size:4.58611px"
+   id="tspan4">website</tspan>s</tspan></text>
+    <circle
+       style="display:inline;fill:#a0ffdb;fill-opacity:0.8108108;stroke:#00bb74;stroke-width:0.26458333;stroke-linecap:square;stroke-opacity:1;stroke-dasharray:none"
+       id="path1-1"
+       cx="113.47739"
+       cy="32.829121"
+       r="26.208334" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:'Avenir Next';-inkscape-font-specification:'Avenir Next';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;inline-size:41.4827;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linecap:square;stroke-opacity:1"
+       x="112.09507"
+       y="42.18206"
+       id="text1-7"
+       transform="translate(2.2587093,-8.2733545)"><tspan
+         x="112.09507"
+         y="42.18206"
+         id="tspan6"><tspan
+           style="stroke-width:0.5"
+           id="tspan5">websites I like</tspan></tspan></text>
+  </g>
+</svg>
