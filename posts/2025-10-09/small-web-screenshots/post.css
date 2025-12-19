@@ -1,8 +1,16 @@
 #map{
     width: 100%;
     height:450px;
-    margin-top:1.5rem;
     background-color: black;
+}
+
+/* 
+    on mobile during fullscreen mode, any margin applied directly to the "map" div appears as a gap.
+    because of this, we look for the preceding paragraph block and apply the margin to the bottom of 
+    that instead...
+*/
+p:has(+ #map) {
+  margin-bottom: 1.5rem;
 }
 
 #search-suggestions {
