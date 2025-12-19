@@ -91,16 +91,32 @@ map.on('click', async function(e) {
         if (ss_x == 94 && ss_y == 99) {
             L.popup().setLatLng(e.latlng).setContent("You found Waldo! 🎉").openOn(map);
         } else if (searchForm.style.display === 'none') {
-            const response = await fetch(`https://smallwebscreenshots.s3.us-east-1.amazonaws.com/v1/blocks/${ss_x}/${ss_y}.html`)
-            if (!response.ok) {
-                console.warn('Failed to get url file');
+
+            // open new window immediately
+            const newWindow = window.open('about:blank', 'smallwebscreenshot' + Date.now());
+
+            if (!newWindow) {
+                alert("Please allow popups to open screenshots!");
+                return;
             }
 
-            const url = await response.text();
-            console.log(`> opening: ${url.trim()}`)
-            window.open('https://' + url.trim() + '/?ref=smallwebscreenshots', '_blank');
-        }
+            try {
+                const response = await fetch(`https://smallwebscreenshots.s3.us-east-1.amazonaws.com/v1/blocks/${ss_x}/${ss_y}.html`)
+                if (response.ok) {
+                    const url = await response.text();
+                    console.log(`> opening: ${url.trim()}`)
+                    newWindow.location.href = 'https://' + url.trim() + '/?ref=smallwebscreenshots';
 
+                } else {
+                    // Close it if the fetch failed
+                    newWindow.close();
+                }
+            } catch (err) {
+                console.warn('Failed to get url file, err', err);
+                newWindow.close();
+            }
+            
+        }
         sendMapEvent(clickPosition=xy);
     }
 });
