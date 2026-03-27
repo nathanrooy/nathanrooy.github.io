@@ -10,7 +10,7 @@
     that instead...
 */
 p:has(+ #map) {
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 #search-suggestions {
